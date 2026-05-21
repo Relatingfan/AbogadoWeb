@@ -1,0 +1,63 @@
+---
+import ServiceCard from '../ServiceCard.astro';
+
+const services = [
+  {
+    title: "Litigio Estratégico",
+    description: "Representación experta en controversias complejas. Diseñamos estrategias ofensivas y defensivas para proteger sus intereses en tribunales con un enfoque implacable y meticuloso.",
+    icon: "ph-scales"
+  },
+  {
+    title: "Derecho Corporativo",
+    description: "Asesoría integral para empresas. Desde la constitución y gobierno corporativo hasta fusiones y adquisiciones, asegurando que su negocio opere con absoluta certeza legal.",
+    icon: "ph-buildings"
+  },
+  {
+    title: "Propiedad Intelectual",
+    description: "Blindaje de sus activos intangibles. Registro y defensa de marcas, patentes y derechos de autor frente a infracciones y competencia desleal en mercados globales.",
+    icon: "ph-copyright"
+  },
+  {
+    title: "Derecho Inmobiliario",
+    description: "Certidumbre en cada transacción. Auditoría legal, estructuración de desarrollos y resolución de conflictos sobre la propiedad y uso de suelo.",
+    icon: "ph-map-trifold"
+  },
+  {
+    title: "Compliance Legal",
+    description: "Prevención de riesgos normativos. Implementación de políticas de cumplimiento anticorrupción, protección de datos y lineamientos ESG para corporativos.",
+    icon: "ph-shield-check"
+  },
+  {
+    title: "Derecho Laboral",
+    description: "Gestión de relaciones laborales y representación patronal. Resolvemos conflictos sindicales e individuales protegiendo la estabilidad de su empresa.",
+    icon: "ph-users-three"
+  }
+];
+---
+
+<section id="servicios" class="py-32 relative bg-bg-black z-20">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    
+    <div class="mb-20">
+      <div class="flex items-center gap-4 mb-6 reveal-text">
+        <div class="w-12 h-px bg-legal-gold"></div>
+        <span class="font-josefin text-xs tracking-[0.3em] uppercase text-legal-gold">Áreas de Práctica</span>
+      </div>
+      <h2 class="font-cormorant text-4xl md:text-5xl lg:text-6xl font-light text-legal-white leading-tight reveal-text">
+        Especialización que <br class="hidden md:block"/>
+        <span class="font-playfair italic text-legal-light">marca el precedente.</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-container">
+      {services.map((service, index) => (
+        <ServiceCard 
+          title={service.title} 
+          description={service.description} 
+          icon={service.icon} 
+          delay={index * 0.1}
+        />
+      ))}
+    </div>
+  </div>
+</section>

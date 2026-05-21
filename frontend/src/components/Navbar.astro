@@ -1,0 +1,97 @@
+---
+---
+
+<header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-350 ease-out py-6 border-b border-transparent">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+    
+    <a href="#inicio" class="flex items-center gap-3 group relative z-50">
+      <img src="/Logo.png" alt="GC Global Consultores Logo" class="h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
+      <div class="flex flex-col">
+        <span class="font-playfair text-lg md:text-xl font-bold tracking-wide text-legal-white leading-none">GC GLOBAL</span>
+        <span class="font-josefin text-xs tracking-[0.2em] text-legal-gold mt-1">CONSULTORES</span>
+      </div>
+    </a>
+    
+    <nav class="hidden md:flex items-center gap-8">
+      <a href="#inicio" class="nav-link font-dmsans text-sm font-light text-legal-white hover:text-legal-light tracking-wide transition-colors relative py-2">Inicio</a>
+      <a href="#servicios" class="nav-link font-dmsans text-sm font-light text-legal-white hover:text-legal-light tracking-wide transition-colors relative py-2">Servicios</a>
+      <a href="#nosotros" class="nav-link font-dmsans text-sm font-light text-legal-white hover:text-legal-light tracking-wide transition-colors relative py-2">Nosotros</a>
+      <a href="#compromiso" class="nav-link font-dmsans text-sm font-light text-legal-white hover:text-legal-light tracking-wide transition-colors relative py-2">Compromiso</a>
+      <a href="#contacto" class="nav-link font-dmsans text-sm font-light text-legal-white hover:text-legal-light tracking-wide transition-colors relative py-2">Contacto</a>
+    </nav>
+    
+    <div class="hidden md:block">
+      <a href="#contacto" class="inline-block border border-legal-green text-legal-white hover:bg-legal-green font-dmsans text-xs uppercase tracking-widest font-medium py-3 px-6 transition-all duration-300 ease-out hover:shadow-[0_0_15px_rgba(42,107,42,0.4)]">
+        Consulta Gratuita
+      </a>
+    </div>
+
+    <button id="menu-toggle" class="md:hidden flex flex-col justify-center items-end gap-1.5 w-8 h-8 focus:outline-none relative z-50 group" aria-label="Abrir menú">
+      <span class="hamburger-line w-8 h-0.5 bg-legal-white transition-all duration-300"></span>
+      <span class="hamburger-line w-6 h-0.5 bg-legal-white transition-all duration-300 group-hover:w-8"></span>
+      <span class="hamburger-line w-7 h-0.5 bg-legal-white transition-all duration-300"></span>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="fixed inset-0 bg-bg-black/98 z-40 flex flex-col justify-center items-center gap-8 -translate-y-full opacity-0 pointer-events-none transition-all duration-500 ease-in-out">
+    <nav class="flex flex-col items-center gap-6">
+      <a href="#inicio" class="mobile-nav-link font-playfair text-2xl text-legal-white hover:text-legal-light py-2">Inicio</a>
+      <a href="#servicios" class="mobile-nav-link font-playfair text-2xl text-legal-white hover:text-legal-light py-2">Servicios</a>
+      <a href="#nosotros" class="mobile-nav-link font-playfair text-2xl text-legal-white hover:text-legal-light py-2">Nosotros</a>
+      <a href="#compromiso" class="mobile-nav-link font-playfair text-2xl text-legal-white hover:text-legal-light py-2">Compromiso</a>
+      <a href="#contacto" class="mobile-nav-link font-playfair text-2xl text-legal-white hover:text-legal-light py-2">Contacto</a>
+    </nav>
+    <a href="#contacto" class="mobile-nav-link inline-block border border-legal-green text-legal-white hover:bg-legal-green font-dmsans text-sm uppercase tracking-widest font-medium py-4 px-8 mt-4">
+      Consulta Gratuita
+    </a>
+  </div>
+</header>
+
+<style>
+  .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background-color: #4CAF50; transition: width 0.3s ease-out; }
+  .nav-link:hover::after { width: 100%; }
+  .menu-active .hamburger-line:nth-child(1) { transform: translateY(8px) rotate(45deg); width: 32px; }
+  .menu-active .hamburger-line:nth-child(2) { opacity: 0; width: 0; }
+  .menu-active .hamburger-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); width: 32px; }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+
+  const header = document.getElementById('main-header');
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+  window.addEventListener('scroll', () => {
+    if (header) {
+      if (window.scrollY >= 80) {
+        header.classList.add('bg-bg-black/92', 'backdrop-blur-md', 'py-4', 'border-b-bg-black');
+        header.classList.remove('py-6', 'border-transparent');
+      } else {
+        header.classList.remove('bg-bg-black/92', 'backdrop-blur-md', 'py-4', 'border-b-bg-black');
+        header.classList.add('py-6', 'border-transparent');
+      }
+    }
+  });
+
+  if (menuToggle && mobileMenu) {
+    let isOpen = false;
+    const toggleMenu = () => {
+      isOpen = !isOpen;
+      if (isOpen) {
+        document.body.style.overflow = 'hidden';
+        menuToggle.classList.add('menu-active');
+        mobileMenu.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+        gsap.fromTo('.mobile-nav-link', { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, stagger: 0.08, ease: 'power2.out', delay: 0.1 });
+      } else {
+        document.body.style.overflow = '';
+        menuToggle.classList.remove('menu-active');
+        mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
+      }
+    };
+
+    menuToggle.addEventListener('click', toggleMenu);
+    mobileLinks.forEach(link => { link.addEventListener('click', () => { if (isOpen) toggleMenu(); }); });
+  }
+</script>

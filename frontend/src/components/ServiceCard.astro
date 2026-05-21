@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  delay?: number;
+}
+
+const { title, description, icon, delay = 0 } = Astro.props;
+---
+
+<div class="service-card group relative p-8 border border-legal-dark-green bg-bg-black/50 backdrop-blur-sm hover:border-legal-green transition-all duration-500 overflow-hidden interactive-hover" data-delay={delay}>
+  <div class="absolute inset-0 bg-gradient-to-br from-legal-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+  
+  <div class="relative z-10 flex flex-col h-full">
+    <div class="w-14 h-14 rounded-full bg-legal-dark-green/30 border border-legal-dark-green group-hover:border-legal-green flex items-center justify-center mb-6 transition-colors duration-500">
+      <i class={`ph ${icon} text-2xl text-legal-light group-hover:text-legal-white transition-colors duration-500`}></i>
+    </div>
+    
+    <h3 class="font-playfair text-xl font-bold text-legal-white mb-4 group-hover:text-legal-gold transition-colors duration-300">{title}</h3>
+    <div class="w-12 h-px bg-legal-dark-green group-hover:bg-legal-gold mb-4 transition-colors duration-500"></div>
+    <p class="font-dmsans text-sm font-light text-legal-grey leading-relaxed flex-grow">
+      {description}
+    </p>
+    
+    <div class="mt-8 flex items-center gap-2 text-legal-light group-hover:text-legal-white font-dmsans text-xs uppercase tracking-widest font-medium transition-colors duration-300">
+      <span>Explorar</span>
+      <i class="ph ph-arrow-right group-hover:translate-x-1 transition-transform duration-300"></i>
+    </div>
+  </div>
+</div>

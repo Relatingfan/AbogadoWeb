@@ -1,0 +1,37 @@
+---
+---
+
+<section class="relative h-[60vh] w-full overflow-hidden flex items-center justify-center">
+  <div 
+    id="parallax-bg"
+    class="absolute inset-0 w-full h-[120%] -top-[10%] bg-[url('https://images.unsplash.com/photo-1505664177275-b1664cb87d15?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-30 mix-blend-luminosity"
+  ></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-bg-black via-bg-black/60 to-bg-black"></div>
+  
+  <div class="relative z-10 max-w-4xl mx-auto px-6 text-center reveal-text">
+    <i class="ph ph-quotes text-5xl text-legal-gold mb-6 opacity-50"></i>
+    <h2 class="font-cormorant text-3xl md:text-5xl lg:text-6xl font-light text-legal-white leading-snug">
+      "La justicia no es un ideal distante; es una <span class="font-playfair italic text-legal-light">estrategia ejecutada con precisión</span>."
+    </h2>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    gsap.to('#parallax-bg', {
+      yPercent: 20,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#parallax-bg',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+  });
+</script>

@@ -1,0 +1,135 @@
+---
+import Button from '../Button.astro';
+---
+
+<section id="contacto" class="py-24 bg-bg-black relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      
+      <!-- Contact Info -->
+      <div class="reveal-left">
+        <h2 class="font-playfair text-4xl md:text-5xl text-legal-white mb-6">
+          Agende su <span class="italic text-legal-green">consulta</span>
+        </h2>
+        <p class="font-dmsans font-light text-legal-grey text-lg mb-12 max-w-md">
+          Nuestro equipo de especialistas está listo para escuchar su caso y brindarle la orientación legal que necesita con absoluta confidencialidad.
+        </p>
+
+        <div class="space-y-8 font-dmsans font-light text-legal-white">
+          <div class="flex items-start gap-4">
+            <i class="ph-light ph-map-pin text-2xl text-legal-green mt-1"></i>
+            <div>
+              <p class="font-medium mb-1">Nuestras Oficinas</p>
+              <p class="text-legal-grey">Av. Paseo de la Reforma 123,<br/>Col. Juárez, 06600, CDMX</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-4">
+            <i class="ph-light ph-phone text-2xl text-legal-green mt-1"></i>
+            <div>
+              <p class="font-medium mb-1">Teléfono Directo</p>
+              <a href="tel:+525512345678" class="text-legal-grey hover:text-legal-green transition-colors">+52 (55) 1234 5678</a>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-4">
+            <i class="ph-light ph-envelope-simple text-2xl text-legal-green mt-1"></i>
+            <div>
+              <p class="font-medium mb-1">Correo Electrónico</p>
+              <a href="mailto:contacto@gcglobal.com.mx" class="text-legal-grey hover:text-legal-green transition-colors">contacto@gcglobal.com.mx</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="bg-[#111] p-8 md:p-10 border border-white/5 reveal-right">
+        <form id="contactForm" class="space-y-6">
+          <div class="space-y-2">
+            <label for="name" class="font-josefin text-xs uppercase tracking-wider text-legal-grey">Nombre Completo *</label>
+            <input type="text" id="name" required class="w-full bg-transparent border-b border-white/20 pb-2 text-legal-white focus:outline-none focus:border-legal-green transition-colors" placeholder="Ej. Juan Pérez" />
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <label for="phone" class="font-josefin text-xs uppercase tracking-wider text-legal-grey">Teléfono / WhatsApp *</label>
+              <input type="tel" id="phone" required class="w-full bg-transparent border-b border-white/20 pb-2 text-legal-white focus:outline-none focus:border-legal-green transition-colors" placeholder="+52 55..." />
+            </div>
+            <div class="space-y-2">
+              <label for="email" class="font-josefin text-xs uppercase tracking-wider text-legal-grey">Correo Electrónico *</label>
+              <input type="email" id="email" required class="w-full bg-transparent border-b border-white/20 pb-2 text-legal-white focus:outline-none focus:border-legal-green transition-colors" placeholder="correo@ejemplo.com" />
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label for="service" class="font-josefin text-xs uppercase tracking-wider text-legal-grey">Área de Interés</label>
+            <select id="service" class="w-full bg-transparent border-b border-white/20 pb-2 text-legal-white focus:outline-none focus:border-legal-green transition-colors appearance-none cursor-pointer">
+              <option value="" class="bg-[#111]">Seleccione un área...</option>
+              <option value="corporativo" class="bg-[#111]">Derecho Corporativo</option>
+              <option value="laboral" class="bg-[#111]">Derecho Laboral</option>
+              <option value="civil" class="bg-[#111]">Litigio Civil</option>
+              <option value="fiscal" class="bg-[#111]">Consultoría Fiscal</option>
+              <option value="ambiental" class="bg-[#111]">Derecho Ambiental</option>
+              <option value="otro" class="bg-[#111]">Otro</option>
+            </select>
+          </div>
+
+          <div class="space-y-2">
+            <label for="message" class="font-josefin text-xs uppercase tracking-wider text-legal-grey">Mensaje Breve</label>
+            <textarea id="message" rows="3" class="w-full bg-transparent border-b border-white/20 pb-2 text-legal-white focus:outline-none focus:border-legal-green transition-colors resize-none" placeholder="Describa brevemente su situación..."></textarea>
+          </div>
+
+          <div class="pt-4">
+            <Button variant="primary" class="w-full flex justify-center py-4" id="submitBtn">
+              Enviar Mensaje
+            </Button>
+            <p id="formStatus" class="mt-4 text-center text-sm hidden"></p>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const statusEl = document.getElementById('formStatus');
+  const submitBtn = document.getElementById('submitBtn');
+
+  if(form && statusEl && submitBtn) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const name = (document.getElementById('name') as HTMLInputElement).value;
+      const phone = (document.getElementById('phone') as HTMLInputElement).value;
+      const email = (document.getElementById('email') as HTMLInputElement).value;
+      const service = (document.getElementById('service') as HTMLSelectElement).value;
+      const message = (document.getElementById('message') as HTMLTextAreaElement).value;
+
+      // Simulate validation & send
+      submitBtn.textContent = 'Enviando...';
+      submitBtn.style.opacity = '0.7';
+      
+      setTimeout(() => {
+        // Construct WhatsApp message
+        const waText = `Hola GC Global, soy ${name}. Mi teléfono es ${phone} y mi correo es ${email}. Me interesa el área de ${service || 'General'}. Mensaje: ${message}`;
+        const waNumber = "525512345678"; // Replace with real number
+        const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waText)}`;
+        
+        statusEl.textContent = 'Mensaje preparado. Redirigiendo a WhatsApp...';
+        statusEl.className = 'mt-4 text-center text-sm text-legal-green block';
+        
+        submitBtn.textContent = 'Enviar Mensaje';
+        submitBtn.style.opacity = '1';
+        
+        setTimeout(() => {
+          window.open(waUrl, '_blank');
+          (form as HTMLFormElement).reset();
+          statusEl.classList.add('hidden');
+        }, 1500);
+
+      }, 1000);
+    });
+  }
+</script>

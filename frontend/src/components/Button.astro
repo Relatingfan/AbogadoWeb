@@ -1,0 +1,30 @@
+---
+interface Props {
+  text: string;
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'outline';
+  class?: string;
+  type?: 'button' | 'submit' | 'reset';
+  id?: string;
+}
+
+const { text, href, variant = 'primary', class: className = '', type = 'button', id } = Astro.props;
+
+const baseStyles = "inline-flex items-center justify-center font-dmsans text-sm uppercase tracking-[0.2em] font-medium py-4 px-8 transition-all duration-500 ease-out relative overflow-hidden group interactive-hover";
+
+const variants = {
+  primary: "bg-legal-green text-legal-white hover:bg-[#205220] shadow-[0_4px_20px_rgba(42,107,42,0.3)] hover:shadow-[0_6px_25px_rgba(42,107,42,0.5)]",
+  secondary: "bg-legal-white text-bg-black hover:bg-gray-200",
+  outline: "border border-legal-green text-legal-white hover:bg-legal-green hover:shadow-[0_0_15px_rgba(42,107,42,0.4)]"
+};
+
+const Element = href ? 'a' : 'button';
+const elementProps = href ? { href } : { type };
+---
+
+<Element {...elementProps} id={id} class:list={[baseStyles, variants[variant], className]}>
+  <span class="relative z-10">{text}</span>
+  {variant === 'primary' && (
+    <span class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out z-0"></span>
+  )}
+</Element>

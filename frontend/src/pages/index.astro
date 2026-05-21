@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/sections/HeroSection.astro';
+import CredentialsSection from '../components/sections/CredentialsSection.astro';
+import ServicesSection from '../components/sections/ServicesSection.astro';
+import CinematicScroll from '../components/sections/CinematicScroll.astro';
+import DifferentiatorsSection from '../components/sections/DifferentiatorsSection.astro';
+import TeamSection from '../components/sections/TeamSection.astro';
+import TestimonialsSection from '../components/sections/TestimonialsSection.astro';
+import EnvironmentSection from '../components/sections/EnvironmentSection.astro';
+import ProcessSection from '../components/sections/ProcessSection.astro';
+import ContactSection from '../components/sections/ContactSection.astro';
+---
+
+<Layout title="Inicio">
+  <main>
+    <HeroSection />
+    <CredentialsSection />
+    <ServicesSection />
+    <CinematicScroll />
+    <DifferentiatorsSection />
+    <TeamSection />
+    <TestimonialsSection />
+    <EnvironmentSection />
+    <ProcessSection />
+    <ContactSection />
+  </main>
+</Layout>
+
+<script>
+  import { initAnimations } from '../scripts/animations.js';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    initAnimations();
+  });
+</script>

@@ -1,0 +1,53 @@
+---
+---
+
+<section id="proceso" class="py-24 bg-[#0a0a0a] relative">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+    <div class="mb-20 text-center reveal-up">
+      <p class="font-josefin tracking-[0.2em] text-legal-green text-sm uppercase mb-4">Nuestra Metodología</p>
+      <h2 class="font-playfair text-4xl md:text-5xl text-legal-white">
+        El camino hacia la <span class="italic text-legal-grey">solución</span>
+      </h2>
+    </div>
+
+    <div class="relative">
+      <!-- Line connector (desktop) -->
+      <div class="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-white/10 -translate-y-1/2"></div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6 relative">
+        {
+          [
+            {
+              step: "01",
+              title: "Consulta Inicial",
+              desc: "Evaluación preliminar y confidencial de su situación jurídica."
+            },
+            {
+              step: "02",
+              title: "Análisis Profundo",
+              desc: "Estudio meticuloso del caso y viabilidad de las alternativas."
+            },
+            {
+              step: "03",
+              title: "Estrategia Legal",
+              desc: "Diseño de un plan de acción a la medida, claro y objetivo."
+            },
+            {
+              step: "04",
+              title: "Ejecución y Cierre",
+              desc: "Representación firme hasta alcanzar el mejor resultado posible."
+            }
+          ].map((item, i) => (
+            <div class="relative flex flex-col items-center text-center reveal-up" style={`transition-delay: ${i * 150}ms`}>
+              <div class="w-16 h-16 rounded-full bg-[#111] border border-legal-green flex items-center justify-center font-playfair text-2xl text-legal-green mb-6 relative z-10 shadow-[0_0_20px_rgba(42,107,42,0.2)]">
+                {item.step}
+              </div>
+              <h3 class="font-playfair text-xl text-legal-white mb-3">{item.title}</h3>
+              <p class="font-dmsans font-light text-legal-grey text-sm">{item.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

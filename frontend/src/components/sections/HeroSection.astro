@@ -1,0 +1,98 @@
+---
+import Button from '../Button.astro';
+---
+
+<section id="inicio" class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+  
+  <div class="absolute inset-0 w-full h-full z-0 bg-bg-black">
+    <video 
+      id="hero-video"
+      class="w-full h-full object-cover opacity-40 mix-blend-luminosity scale-105"
+      muted loop playsinline autoplay
+      poster="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2000&auto=format&fit=crop"
+    >
+      <source src="https://assets.mixkit.co/videos/preview/mixkit-lawyer-in-suit-walking-in-hallway-4033-large.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-b from-bg-black/60 via-transparent to-bg-black z-10"></div>
+  </div>
+
+  
+  <div class="relative z-20 max-w-7xl mx-auto px-6 md:px-12 w-full pt-20">
+    <div class="max-w-4xl">
+      <div class="overflow-hidden mb-4">
+        <span class="block font-josefin text-legal-gold text-sm md:text-base tracking-[0.3em] uppercase hero-elem opacity-0 translate-y-8">
+          Práctica Legal de Excelencia
+        </span>
+      </div>
+      
+      <div class="overflow-hidden mb-6">
+        <h1 class="font-cormorant text-5xl md:text-7xl lg:text-8xl font-light text-legal-white leading-[1.1] hero-elem opacity-0 translate-y-12">
+          Defensa Estratégica.<br />
+          <span class="font-playfair italic font-normal text-legal-light">Resultados</span> Impecables.
+        </h1>
+      </div>
+      
+      <div class="overflow-hidden mb-12 max-w-2xl">
+        <p class="font-dmsans text-base md:text-lg text-legal-grey font-light leading-relaxed hero-elem opacity-0 translate-y-8">
+          En GC Global Consultores, redefinimos el estándar del litigio y la consultoría corporativa. Protegemos su patrimonio y reputación con el rigor que el entorno actual exige.
+        </p>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row gap-6 hero-elem opacity-0 translate-y-8">
+        <Button text="Nuestros Servicios" href="#servicios" variant="primary" />
+        <Button text="Agendar Consulta" href="#contacto" variant="outline" />
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3 hero-scroll opacity-0">
+    <span class="font-josefin text-xs tracking-[0.2em] text-legal-grey uppercase">Descubrir</span>
+    <div class="w-px h-12 bg-legal-dark-green relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-full bg-legal-light origin-top scale-y-0 animate-scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes scroll-line {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    50.1% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+  .animate-scroll-line { animation: scroll-line 2s cubic-bezier(0.77, 0, 0.175, 1) infinite; }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    
+    const tl = gsap.timeline({ delay: 0.2 });
+    
+    tl.to('.hero-elem', {
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      stagger: 0.15,
+      ease: 'power3.out'
+    })
+    .to('.hero-scroll', { opacity: 1, duration: 1 }, "-=0.5");
+
+    
+    gsap.to('#hero-video', {
+      yPercent: 30,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#inicio',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+  });
+</script>

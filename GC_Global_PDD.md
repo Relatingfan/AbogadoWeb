@@ -48,7 +48,7 @@ GC Global Consultores requiere una landing page de alto impacto diseñada para c
 # **2. Identidad Visual y Sistema de Diseño**
 
 ## **2.1 Dirección Artística**
-
+z
 La dirección estética del sitio se define como: Luxury Legal Dark — un editorial sofisticado de fondo oscuro (casi negro) con acentos verdes precisos, tipografía serif para jerarquía principal y tipografía geométrica delgada para cuerpo de texto. La inspiración visual proviene de despachos internacionales de primera línea como Skadden, Clifford Chance y Cleary Gottlieb.
 
 ## **2.2 Paleta de Colores**
