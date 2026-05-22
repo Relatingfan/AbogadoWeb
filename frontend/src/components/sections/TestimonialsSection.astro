@@ -10,50 +10,8 @@
       <div class="gold-divider w-24 mx-auto"></div>
     </div>
 
-    <!-- Simple Slider using CSS scroll snap -->
-    <div class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-6 pb-12">
-      {
-        [
-          {
-            quote: "GC Global Consultores nos brindó una asesoría corporativa impecable. Su atención al detalle y visión estratégica fueron clave para nuestra expansión en México.",
-            author: "A. M.",
-            role: "Director General, Sector Tecnológico"
-          },
-          {
-            quote: "La dedicación y discreción con la que manejaron nuestro caso fue excepcional. Un equipo de verdaderos profesionales en quienes se puede confiar ciegamente.",
-            author: "C. R.",
-            role: "Empresario"
-          },
-          {
-            quote: "Resolvieron un conflicto laboral complejo con una eficiencia que superó nuestras expectativas. Su enfoque humano marca toda la diferencia.",
-            author: "J. L.",
-            role: "Directora de Recursos Humanos"
-          }
-        ].map((testimonial, i) => (
-          <div class="min-w-full md:min-w-[500px] snap-center bg-[#111] p-10 md:p-12 border border-white/5 reveal-up" style={`transition-delay: ${i * 150}ms`}>
-            <div class="text-legal-green mb-6 opacity-50">
-              <i class="ph-fill ph-quotes text-5xl"></i>
-            </div>
-            <p class="font-cormorant italic text-2xl md:text-3xl text-legal-white leading-snug mb-8">
-              "{testimonial.quote}"
-            </p>
-            <div>
-              <p class="font-dmsans font-medium text-legal-white">{testimonial.author}</p>
-              <p class="font-josefin text-legal-grey text-xs uppercase tracking-widest mt-1">{testimonial.role}</p>
-            </div>
-          </div>
-        ))
-      }
-    </div>
+    <!-- Trustindex Widget -->
+    <script is:inline defer async src="https://cdn.trustindex.io/loader.js?0ecb4e37291e607215964982490"></script>
   </div>
 </section>
 
-<style>
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .hide-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-</style>

@@ -4,15 +4,12 @@ import Button from '../Button.astro';
 
 <section id="inicio" class="relative h-screen w-full flex items-center justify-center overflow-hidden">
   
-  <div class="absolute inset-0 w-full h-full z-0 bg-bg-black">
-    <video 
-      id="hero-video"
-      class="w-full h-full object-cover opacity-40 mix-blend-luminosity scale-105"
-      muted loop playsinline autoplay
-      poster="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2000&auto=format&fit=crop"
-    >
-      <source src="https://assets.mixkit.co/videos/preview/mixkit-lawyer-in-suit-walking-in-hallway-4033-large.mp4" type="video/mp4" />
-    </video>
+  <div class="absolute inset-0 w-full h-full z-0 bg-bg-black lg:bg-transparent">
+    <!-- Static image fallback for mobile (<1024px) -->
+    <div 
+      class="absolute inset-0 w-full h-full bg-cover bg-center opacity-40 mix-blend-luminosity scale-105 lg:hidden"
+      style="background-image: url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2000&auto=format&fit=crop');"
+    ></div>
     <div class="absolute inset-0 bg-gradient-to-b from-bg-black/60 via-transparent to-bg-black z-10"></div>
   </div>
 
@@ -27,8 +24,7 @@ import Button from '../Button.astro';
       
       <div class="overflow-hidden mb-6">
         <h1 class="font-cormorant text-5xl md:text-7xl lg:text-8xl font-light text-legal-white leading-[1.1] hero-elem opacity-0 translate-y-12">
-          Defensa Estratégica.<br />
-          <span class="font-playfair italic font-normal text-legal-light">Resultados</span> Impecables.
+          Abogados en <span class="font-playfair italic font-normal text-legal-light">Aguascalientes</span>.<br />Defensa Estratégica.
         </h1>
       </div>
       
@@ -71,6 +67,16 @@ import Button from '../Button.astro';
   gsap.registerPlugin(ScrollTrigger);
 
   document.addEventListener('DOMContentLoaded', () => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mediaQuery.matches) {
+      document.querySelectorAll('.hero-elem, .hero-scroll').forEach(el => {
+        if (el instanceof HTMLElement) {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        }
+      });
+      return;
+    }
     
     const tl = gsap.timeline({ delay: 0.2 });
     
@@ -84,15 +90,5 @@ import Button from '../Button.astro';
     .to('.hero-scroll', { opacity: 1, duration: 1 }, "-=0.5");
 
     
-    gsap.to('#hero-video', {
-      yPercent: 30,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '#inicio',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true
-      }
-    });
   });
 </script>

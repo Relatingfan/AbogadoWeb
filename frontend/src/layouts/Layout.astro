@@ -22,6 +22,46 @@ const { title, description = "GC Global Consultores — Asesoramiento Jurídico 
 		<title>{title} | GC Global Consultores</title>
 		<meta name="description" content={description} />
 		<script is:inline src="https://unpkg.com/@phosphor-icons/web"></script>
+		<script type="application/ld+json" is:inline>
+			{
+				"@context": "https://schema.org",
+				"@type": "LegalService",
+				"name": "GC Global Consultores",
+				"image": "https://gcglobal.mx/Logo.png",
+				"@id": "https://gcglobal.mx/#legalservice",
+				"url": "https://gcglobal.mx",
+				"telephone": "+524494136546",
+				"address": {
+					"@type": "PostalAddress",
+					"streetAddress": "Av. Alameda 231, Int. 301, Barrio de la Estación",
+					"addressLocality": "Aguascalientes",
+					"addressRegion": "Ags.",
+					"postalCode": "20270",
+					"addressCountry": "MX"
+				},
+				"geo": {
+					"@type": "GeoCoordinates",
+					"latitude": 21.8804997,
+					"longitude": -102.2858978
+				},
+				"openingHoursSpecification": {
+					"@type": "OpeningHoursSpecification",
+					"dayOfWeek": [
+						"Monday",
+						"Tuesday",
+						"Wednesday",
+						"Thursday",
+						"Friday"
+					],
+					"opens": "09:00",
+					"closes": "18:00"
+				},
+				"sameAs": [
+					"https://linkedin.com",
+					"https://instagram.com"
+				]
+			}
+		</script>
 	</head>
 	<body class="bg-bg-black text-legal-white font-dmsans selection:bg-legal-green selection:text-white antialiased">
 		<div class="noise-bg" aria-hidden="true"></div>

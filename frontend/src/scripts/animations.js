@@ -4,6 +4,17 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export function initAnimations() {
+  const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (mediaQuery.matches) {
+    document.querySelectorAll('.reveal-text, .stagger-container, .fade-in, .reveal-up, .reveal-left, .reveal-right').forEach(el => {
+      if (el instanceof HTMLElement) {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      }
+    });
+    return;
+  }
+
   // Reveal text animation
   const revealElements = document.querySelectorAll('.reveal-text');
   revealElements.forEach((el) => {

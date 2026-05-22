@@ -1,0 +1,111 @@
+---
+const frameModules = import.meta.glob('../../../../assets/Scroll/*.jpg', { eager: true });
+const keys = Object.keys(frameModules).sort();
+const frameUrls = keys.map((key) => {
+  const mod = frameModules[key];
+  return mod.default ? mod.default.src || mod.default : mod;
+});
+---
+
+<div class="fixed top-0 left-0 w-full h-screen pointer-events-none z-0 overflow-hidden">
+  <canvas id="hero-canvas" class="w-full h-full object-cover opacity-40 mix-blend-luminosity scale-105"></canvas>
+  <div class="absolute inset-0 bg-gradient-to-b from-bg-black/60 via-transparent to-bg-black z-10"></div>
+</div>
+
+<script define:vars={{ frameUrls }}>
+  window.scrollFrameUrls = frameUrls;
+</script>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('hero-canvas');
+    if (!canvas) return;
+    const context = canvas.getContext('2d');
+    if (!context) return;
+    
+    // Check mobile or reduced motion
+    const isMobile = window.innerWidth < 1024;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (isMobile || prefersReducedMotion) {
+      canvas.style.display = 'none';
+      return;
+    }
+    
+    // Resize canvas
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      render();
+    };
+    window.addEventListener('resize', resize);
+    
+    const frameCount = window.scrollFrameUrls.length;
+    const images = [];
+    let loaded = 0;
+    
+    const seq = { frame: 0 };
+    
+    // Preload all images
+    for (let i = 0; i < frameCount; i++) {
+      const img = new Image();
+      img.onload = () => {
+        loaded++;
+        render();
+      };
+      img.src = window.scrollFrameUrls[i];
+      images.push(img);
+    }
+    
+    // Initial size setup
+    resize();
+
+    function render() {
+      if (!images[Math.round(seq.frame)]) return;
+      const img = images[Math.round(seq.frame)];
+      if (!img.complete || img.naturalWidth === 0) return;
+      
+      const canvasRatio = canvas.width / canvas.height;
+      const imgRatio = img.width / img.height;
+      
+      let drawWidth, drawHeight, offsetX, offsetY;
+      
+      if (imgRatio > canvasRatio) {
+        drawHeight = canvas.height;
+        drawWidth = canvas.height * imgRatio;
+        offsetX = (canvas.width - drawWidth) / 2;
+        offsetY = 0;
+      } else {
+        drawWidth = canvas.width;
+        drawHeight = canvas.width / imgRatio;
+        offsetX = 0;
+        offsetY = (canvas.height - drawHeight) / 2;
+      }
+      
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+    }
+
+    // Image frame animation scroll trigger
+    gsap.to(seq, {
+      frame: frameCount - 1,
+      snap: "frame",
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#inicio",
+        start: "top top",
+        endTrigger: "#servicios",
+        end: "top+=50% top", 
+        scrub: true
+      },
+      onUpdate: render
+    });
+
+
+  });
+</script>
