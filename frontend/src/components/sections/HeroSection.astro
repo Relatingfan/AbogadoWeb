@@ -5,11 +5,6 @@ import Button from '../Button.astro';
 <section id="inicio" class="relative h-screen w-full flex items-center justify-center overflow-hidden">
   
   <div class="absolute inset-0 w-full h-full z-0 bg-bg-black lg:bg-transparent">
-    <!-- Static image fallback for mobile (<1024px) -->
-    <div 
-      class="absolute inset-0 w-full h-full bg-cover bg-center opacity-40 mix-blend-luminosity scale-105 lg:hidden"
-      style="background-image: url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2000&auto=format&fit=crop');"
-    ></div>
     <div class="absolute inset-0 bg-gradient-to-b from-bg-black/60 via-transparent to-bg-black z-10"></div>
   </div>
 
@@ -34,9 +29,8 @@ import Button from '../Button.astro';
         </p>
       </div>
       
-      <div class="flex flex-col sm:flex-row gap-6 hero-elem opacity-0 translate-y-8">
-        <Button text="Nuestros Servicios" href="#servicios" variant="primary" />
-        <Button text="Agendar Consulta" href="#contacto" variant="outline" />
+      <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 hero-elem opacity-0 translate-y-8 w-full">
+        <Button text="Agendar Consulta" href="#contacto" variant="primary" class="w-full sm:w-auto text-center" />
       </div>
     </div>
   </div>

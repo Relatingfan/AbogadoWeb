@@ -1,0 +1,72 @@
+---
+interface Props {
+  size?: number;
+  duration?: number;
+  borderWidth?: number;
+  initialOffset?: number;
+  class?: string;
+  className?: string;
+}
+
+const {
+  size = 40,
+  duration = 6,
+  borderWidth = 2,
+  initialOffset = 20,
+  class: classProp = "",
+  className = ""
+} = Astro.props;
+
+// Use custom className/class or fall back to the project's brand gold color for the beam.
+const combinedClass = classProp || className || "from-transparent via-legal-gold to-transparent";
+---
+
+<div 
+  class="border-beam pointer-events-none absolute inset-0 rounded-[inherit] z-20"
+  style={{
+    '--size': `${size}px`,
+    '--duration': `${duration}s`,
+    '--border-width': `${borderWidth}px`,
+    '--initial-offset': `${initialOffset}%`
+  }}
+>
+  <div class:list={[
+    "border-beam-path absolute aspect-square bg-gradient-to-l",
+    combinedClass
+  ]} />
+</div>
+
+<style>
+  .border-beam {
+    padding: var(--border-width, 2px);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .border-beam-path {
+    width: var(--size, 40px);
+    /* Define the animation track following the border-box with inherit border-radius */
+    offset-path: rect(0 auto auto 0 round inherit);
+    offset-anchor: 50% 50%;
+    animation: border-beam-anim var(--duration, 6s) linear infinite;
+  }
+
+  @keyframes border-beam-anim {
+    0% {
+      offset-distance: var(--initial-offset, 20%);
+    }
+    100% {
+      offset-distance: calc(var(--initial-offset, 20%) + 100%);
+    }
+  }
+
+  /* Support accessibility guidelines by disabling the animation for users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .border-beam-path {
+      animation: none !important;
+      display: none !important;
+    }
+  }
+</style>

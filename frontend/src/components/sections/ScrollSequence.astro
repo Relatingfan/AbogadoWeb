@@ -28,11 +28,10 @@ const frameUrls = keys.map((key) => {
     const context = canvas.getContext('2d');
     if (!context) return;
     
-    // Check mobile or reduced motion
-    const isMobile = window.innerWidth < 1024;
+    // Check reduced motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
-    if (isMobile || prefersReducedMotion) {
+    if (prefersReducedMotion) {
       canvas.style.display = 'none';
       return;
     }
@@ -100,7 +99,7 @@ const frameUrls = keys.map((key) => {
         trigger: "#inicio",
         start: "top top",
         endTrigger: "#servicios",
-        end: "top+=50% top", 
+        end: "top top", 
         scrub: true
       },
       onUpdate: render

@@ -1,4 +1,6 @@
 ---
+import { HoverButton } from './ui/hover-glow-button';
+
 interface Props {
   text: string;
   href?: string;
@@ -10,21 +12,43 @@ interface Props {
 
 const { text, href, variant = 'primary', class: className = '', type = 'button', id } = Astro.props;
 
-const baseStyles = "inline-flex items-center justify-center font-dmsans text-sm uppercase tracking-[0.2em] font-medium py-4 px-8 transition-all duration-500 ease-out relative overflow-hidden group interactive-hover";
-
-const variants = {
-  primary: "bg-legal-green text-legal-white hover:bg-[#205220] shadow-[0_4px_20px_rgba(42,107,42,0.3)] hover:shadow-[0_6px_25px_rgba(42,107,42,0.5)]",
-  secondary: "bg-legal-white text-bg-black hover:bg-gray-200",
-  outline: "border-2 border-legal-green text-legal-white hover:bg-legal-green hover:shadow-[0_0_15px_rgba(42,107,42,0.4)]"
+// Determine colors based on variants following GC Global branding
+const config = {
+  primary: {
+    backgroundColor: '#2A6B2A', // --color-primary
+    glowColor: '#C9A84C', // --color-gold glow makes it stand out beautifully
+    textColor: '#F2EFE9', // --color-text
+    hoverTextColor: '#C9A84C', // --color-gold
+    customClass: 'border-2 border-transparent shadow-[0_4px_20px_rgba(42,107,42,0.3)] hover:shadow-[0_6px_25px_rgba(42,107,42,0.5)]'
+  },
+  secondary: {
+    backgroundColor: '#F2EFE9', // --color-text
+    glowColor: '#2A6B2A',
+    textColor: '#0D0D0D', // dark background text
+    hoverTextColor: '#2A6B2A',
+    customClass: 'border-2 border-transparent'
+  },
+  outline: {
+    backgroundColor: 'transparent',
+    glowColor: '#4CAF50', // --color-primary-h
+    textColor: '#F2EFE9',
+    hoverTextColor: '#C9A84C',
+    customClass: 'border-2 border-[#2A6B2A] hover:border-[#C9A84C] transition-colors duration-300'
+  }
 };
 
-const Element = href ? 'a' : 'button';
-const elementProps = href ? { href } : { type };
+const currentConfig = config[variant];
 ---
 
-<Element {...elementProps} id={id} class:list={[baseStyles, variants[variant], className]}>
-  <span class="relative z-10">{text}</span>
-  {variant === 'primary' && (
-    <span class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out z-0"></span>
-  )}
-</Element>
+<HoverButton
+  client:visible
+  id={id}
+  href={href}
+  glowColor={currentConfig.glowColor}
+  backgroundColor={currentConfig.backgroundColor}
+  textColor={currentConfig.textColor}
+  hoverTextColor={currentConfig.hoverTextColor}
+  className={`${currentConfig.customClass} ${className}`}
+>
+  {text}
+</HoverButton>

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&family=Josefin+Sans:wght@300&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 @import "tailwindcss";
+@import "tw-animate-css";
 
 @theme {
   --color-bg-black: #0D0D0D;
@@ -14,6 +15,22 @@
   --font-playfair: "Playfair Display", serif;
   --font-dmsans: "DM Sans", sans-serif;
   --font-josefin: "Josefin Sans", sans-serif;
+
+  --radius-none: 0px;
+  --radius-xs: 0.125rem;
+  --radius-default: 0.375rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 1.875rem;
+  --radius-full: 9999px;
+  --color-button-ripple-color: var(--button-ripple-color);
+}
+
+:root {
+  --button-ripple-color: oklch(0.145 0 0 / 0.3);
+}
+
+.dark {
+  --button-ripple-color: oklch(0.985 0 0 / 0.5);
 }
 
 ::-webkit-scrollbar {
@@ -56,4 +73,13 @@ body {
 .gold-divider {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.3) 50%, transparent);
+}
+
+.transform-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }

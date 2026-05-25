@@ -1,4 +1,5 @@
 ---
+import Text3DFlip from '../ui/text-3d-flip';
 ---
 
 <section class="relative h-[60vh] w-full overflow-hidden flex items-center justify-center">
@@ -8,11 +9,19 @@
   ></div>
   <div class="absolute inset-0 bg-gradient-to-b from-bg-black via-bg-black/60 to-bg-black"></div>
   
-  <div class="relative z-10 max-w-4xl mx-auto px-6 text-center reveal-text">
-    <i class="ph ph-quotes text-5xl text-legal-gold mb-6 opacity-50"></i>
-    <h2 class="font-cormorant text-3xl md:text-5xl lg:text-6xl font-light text-legal-white leading-snug">
-      "La justicia no es un ideal distante; es una <span class="font-playfair italic text-legal-light">estrategia ejecutada con precisión</span>."
-    </h2>
+  <div class="relative z-10 max-w-4xl mx-auto px-6 text-center reveal-text w-full">
+    <i class="ph ph-quotes text-5xl text-legal-gold mb-6 opacity-50 block mx-auto"></i>
+    <Text3DFlip
+      client:visible
+      text="&quot;La justicia no es un ideal distante; es una estrategia ejecutada con precisión.&quot;"
+      className="font-cormorant font-light text-2xl md:text-4xl lg:text-5xl text-center justify-center leading-snug w-full"
+      textClassName="text-legal-white"
+      flipTextClassName="text-legal-gold"
+      rotateDirection="top"
+      staggerDuration={0.03}
+      staggerFrom="first"
+      transition={{ type: "spring", damping: 25, stiffness: 160 }}
+    />
   </div>
 </section>
 
