@@ -3,18 +3,18 @@ import { HoverButton } from "./hover-glow-button";
 
 export function Default() {
   return (
-    <div className="w-screen min-h-screen flex flex-col md:flex-row items-center justify-center gap-8 bg-[#0D0D0D] p-8">
+    <div className="w-screen min-h-screen flex flex-col md:flex-row items-center justify-center gap-8 bg-bg p-8">
       {/* Card 1: Spotlight */}
       <GlowCard glowColor="green">
         <div className="flex flex-col items-center justify-between h-full text-center p-6 z-10">
-          <div className="w-12 h-12 rounded-full bg-[#1A3E1A]/50 border border-[#2A6B2A]/30 flex items-center justify-center mb-4">
+          <div className="w-12 h-12 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center mb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#4CAF50"
+              stroke="#2A6B2A"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -26,8 +26,8 @@ export function Default() {
             </svg>
           </div>
           <div>
-            <h3 className="font-playfair text-xl font-bold mb-2 text-[#C9A84C]">Spotlight Card</h3>
-            <p className="font-dmsans text-sm text-[#B0ADA8] leading-relaxed">
+            <h3 className="font-playfair text-xl font-bold mb-2 text-gold">Spotlight Card</h3>
+            <p className="font-dmsans text-sm text-text/70 leading-relaxed">
               Hover over this card to see the premium green glow effect following your cursor.
             </p>
           </div>
@@ -37,14 +37,14 @@ export function Default() {
       {/* Card 2: Interactive */}
       <GlowCard glowColor="green">
         <div className="flex flex-col items-center justify-between h-full text-center p-6 z-10">
-          <div className="w-12 h-12 rounded-full bg-[#1A3E1A]/50 border border-[#2A6B2A]/30 flex items-center justify-center mb-4">
+          <div className="w-12 h-12 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center mb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#4CAF50"
+              stroke="#2A6B2A"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -54,8 +54,8 @@ export function Default() {
             </svg>
           </div>
           <div>
-            <h3 className="font-playfair text-xl font-bold mb-2 text-[#C9A84C]">Interactive</h3>
-            <p className="font-dmsans text-sm text-[#B0ADA8] leading-relaxed">
+            <h3 className="font-playfair text-xl font-bold mb-2 text-gold">Interactive</h3>
+            <p className="font-dmsans text-sm text-text/70 leading-relaxed">
               The radial highlight responds dynamically to the pointer position in real time.
             </p>
           </div>
@@ -65,14 +65,14 @@ export function Default() {
       {/* Card 3: Customizable */}
       <GlowCard glowColor="green">
         <div className="flex flex-col items-center justify-between h-full text-center p-6 z-10">
-          <div className="w-12 h-12 rounded-full bg-[#1A3E1A]/50 border border-[#2A6B2A]/30 flex items-center justify-center mb-4">
+          <div className="w-12 h-12 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center mb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#4CAF50"
+              stroke="#2A6B2A"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -89,8 +89,8 @@ export function Default() {
             </svg>
           </div>
           <div>
-            <h3 className="font-playfair text-xl font-bold mb-2 text-[#C9A84C]">Customizable</h3>
-            <p className="font-dmsans text-sm text-[#B0ADA8] leading-relaxed">
+            <h3 className="font-playfair text-xl font-bold mb-2 text-gold">Customizable</h3>
+            <p className="font-dmsans text-sm text-text/70 leading-relaxed">
               Easily adjust the size, color range, border radius, and styles using Tailwind CSS.
             </p>
           </div>

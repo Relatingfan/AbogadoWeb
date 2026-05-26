@@ -2,78 +2,35 @@
 import Button from '../Button.astro';
 ---
 
-<section id="contacto" class="py-24 bg-bg-black relative overflow-hidden">
+<section id="contacto" class="py-24 bg-bg relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
       
       <!-- Contact Info -->
       <div class="reveal-left">
-        <h2 class="font-playfair text-4xl md:text-5xl text-legal-white mb-6">
-          Agende su <span class="italic text-legal-green">consulta</span>
+        <h2 class="font-playfair text-4xl md:text-5xl text-text mb-6">
+          Agende su <span class="italic text-primary">consulta</span>
         </h2>
-        <p class="font-dmsans font-light text-legal-grey text-lg mb-12 max-w-md">
+        <p class="font-dmsans font-light text-text/70 text-lg mb-12 max-w-md">
           Nuestro equipo de especialistas está listo para escuchar su caso y brindarle la orientación legal que necesita con absoluta confidencialidad.
         </p>
 
-        <div class="space-y-8 font-dmsans font-light text-legal-white">
+        <div class="space-y-8 font-dmsans font-light text-text">
           <div class="flex items-start gap-4">
-            <i class="ph-light ph-map-pin text-2xl text-legal-green mt-1"></i>
+            <i class="ph-light ph-map-pin text-2xl text-primary mt-1"></i>
             <div>
               <p class="font-medium mb-1">Oficina Principal (Sede Aguascalientes)</p>
-              <p class="text-legal-grey text-sm">Av. Alameda 231, Int. 301,<br/>Barrio de la Estación, Aguascalientes, Ags.</p>
+              <p class="text-text/70 text-sm">Av. Alameda 231, Int. 301,<br/>Barrio de la Estación, Aguascalientes, Ags.</p>
             </div>
           </div>
           
-          <div class="flex items-start gap-4">
-            <i class="ph-light ph-phone text-2xl text-legal-green mt-1"></i>
-            <div class="space-y-4 w-full">
-              <p class="font-medium mb-1">Directorio de Contacto</p>
-              
-              <div>
-                <p class="text-xs font-josefin uppercase tracking-wider text-legal-gold mb-2 border-b border-white/10 pb-1">Sede Aguascalientes</p>
-                <ul class="space-y-2 text-sm">
-                  <li class="flex flex-col sm:flex-row sm:justify-between gap-1">
-                    <span class="text-legal-grey">Lic. Brenda Galván (Principal):</span>
-                    <a href="tel:+524494136546" class="hover:text-legal-green transition-colors text-legal-white font-medium">+52 (449) 413 6546</a>
-                  </li>
-                  <li class="flex flex-col sm:flex-row sm:justify-between gap-1">
-                    <span class="text-legal-grey">Lic. Michelle Fernandez:</span>
-                    <a href="tel:+524495576649" class="hover:text-legal-green transition-colors text-legal-white font-medium">+52 (449) 557 6649</a>
-                  </li>
-                  <li class="flex flex-col sm:flex-row sm:justify-between gap-1">
-                    <span class="text-legal-grey">Lic. Pamela Gutierrez:</span>
-                    <a href="tel:+524492232985" class="hover:text-legal-green transition-colors text-legal-white font-medium">+52 (449) 223 2985</a>
-                  </li>
-                </ul>
-              </div>
-              
-              <div>
-                <p class="text-xs font-josefin uppercase tracking-wider text-legal-gold mb-2 border-b border-white/10 pb-1">Sede Pabellón</p>
-                <ul class="space-y-2 text-sm">
-                  <li class="flex flex-col sm:flex-row sm:justify-between gap-1">
-                    <span class="text-legal-grey">Lic. Daniela Ramirez:</span>
-                    <a href="tel:+524651267483" class="hover:text-legal-green transition-colors text-legal-white font-medium">+52 (465) 126 7483</a>
-                  </li>
-                </ul>
-              </div>
-              
-              <div>
-                <p class="text-xs font-josefin uppercase tracking-wider text-legal-gold mb-2 border-b border-white/10 pb-1">Sede Jesús María</p>
-                <ul class="space-y-2 text-sm">
-                  <li class="flex flex-col sm:flex-row sm:justify-between gap-1">
-                    <span class="text-legal-grey">Lic. Teresita de la Cruz:</span>
-                    <a href="tel:+523511564142" class="hover:text-legal-green transition-colors text-legal-white font-medium">+52 (351) 156 4142</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+
           
           <div class="flex items-start gap-4">
-            <i class="ph-light ph-envelope-simple text-2xl text-legal-green mt-1"></i>
+            <i class="ph-light ph-envelope-simple text-2xl text-primary mt-1"></i>
             <div>
               <p class="font-medium mb-1">Correo Electrónico</p>
-              <a href="mailto:dgabogados01_@gmail.com" class="text-legal-grey hover:text-legal-green transition-colors">dgabogados01_@gmail.com</a>
+              <a href="mailto:dgabogados01_@gmail.com" class="text-text/70 hover:text-primary transition-colors">dgabogados01_@gmail.com</a>
             </div>
           </div>
         </div>
@@ -92,52 +49,50 @@ import Button from '../Button.astro';
           ></iframe>
         </div>
       </div>
-
       <!-- Contact Form -->
-      <div class="bg-[#111] p-8 md:p-10 border border-white/5 reveal-right">
+      <div class="bg-bg p-8 md:p-10 border border-primary/20 reveal-right">
         <form id="contactForm" class="space-y-6">
           <div class="space-y-2">
-            <label for="name" class="font-josefin text-xs uppercase tracking-wider text-legal-grey">Nombre Completo *</label>
-            <input type="text" id="name" required class="w-full bg-transparent border-b border-white/20 pb-2 text-legal-white focus:outline-none focus:border-legal-green transition-colors" placeholder="Ej. Juan Pérez" />
+            <label for="name" class="font-josefin text-xs uppercase tracking-wider text-text/70">Nombre Completo *</label>
+            <input type="text" id="name" required class="w-full bg-transparent border-b border-white/20 pb-2 text-text focus:outline-none focus:border-primary transition-colors" placeholder="Ej. Juan Pérez" />
           </div>
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="space-y-2">
-              <label for="phone" class="font-josefin text-xs uppercase tracking-wider text-legal-grey">Teléfono / WhatsApp *</label>
-              <input type="tel" id="phone" required class="w-full bg-transparent border-b border-white/20 pb-2 text-legal-white focus:outline-none focus:border-legal-green transition-colors" placeholder="+52 55..." />
+              <label for="phone" class="font-josefin text-xs uppercase tracking-wider text-text/70">Teléfono / WhatsApp *</label>
+              <input type="tel" id="phone" required class="w-full bg-transparent border-b border-white/20 pb-2 text-text focus:outline-none focus:border-primary transition-colors" placeholder="+52 55..." />
             </div>
             <div class="space-y-2">
-              <label for="email" class="font-josefin text-xs uppercase tracking-wider text-legal-grey">Correo Electrónico *</label>
-              <input type="email" id="email" required class="w-full bg-transparent border-b border-white/20 pb-2 text-legal-white focus:outline-none focus:border-legal-green transition-colors" placeholder="correo@ejemplo.com" />
+              <label for="email" class="font-josefin text-xs uppercase tracking-wider text-text/70">Correo Electrónico *</label>
+              <input type="email" id="email" required class="w-full bg-transparent border-b border-white/20 pb-2 text-text focus:outline-none focus:border-primary transition-colors" placeholder="correo@ejemplo.com" />
             </div>
           </div>
-
+ 
           <div class="space-y-2">
-            <label for="service" class="font-josefin text-xs uppercase tracking-wider text-legal-grey">Área de Interés</label>
-            <select id="service" class="w-full bg-transparent border-b border-white/20 pb-2 text-legal-white focus:outline-none focus:border-legal-green transition-colors appearance-none cursor-pointer">
-              <option value="" class="bg-[#111]">Seleccione un área...</option>
-              <option value="asesoria-juridica" class="bg-[#111]">Asesoría Jurídica</option>
-              <option value="juicios-penales" class="bg-[#111]">Juicios Penales</option>
-              <option value="juicios-civiles" class="bg-[#111]">Juicios civiles</option>
-              <option value="juicios-laborales" class="bg-[#111]">Juicios Laborales</option>
-              <option value="juicios-familiares" class="bg-[#111]">Juicios Familiares</option>
-              <option value="juicios-mercantiles" class="bg-[#111]">Juicios Mercantiles</option>
-              <option value="otro" class="bg-[#111]">Otro</option>
+            <label for="service" class="font-josefin text-xs uppercase tracking-wider text-text/70">Área de Interés</label>
+            <select id="service" class="w-full bg-transparent border-b border-white/20 pb-2 text-text focus:outline-none focus:border-primary transition-colors appearance-none cursor-pointer">
+              <option value="" class="bg-bg">Seleccione un área...</option>
+              <option value="asesoria-juridica" class="bg-bg">Asesoría Jurídica</option>
+              <option value="juicios-penales" class="bg-bg">Juicios Penales</option>
+              <option value="juicios-civiles" class="bg-bg">Juicios civiles</option>
+              <option value="juicios-laborales" class="bg-bg">Juicios Laborales</option>
+              <option value="juicios-familiares" class="bg-bg">Juicios Familiares</option>
+              <option value="juicios-mercantiles" class="bg-bg">Juicios Mercantiles</option>
+              <option value="otro" class="bg-bg">Otro</option>
             </select>
           </div>
-
+ 
           <div class="space-y-2">
-            <label for="message" class="font-josefin text-xs uppercase tracking-wider text-legal-grey">Mensaje Breve</label>
-            <textarea id="message" rows="3" class="w-full bg-transparent border-b border-white/20 pb-2 text-legal-white focus:outline-none focus:border-legal-green transition-colors resize-none" placeholder="Describa brevemente su situación..."></textarea>
+            <label for="message" class="font-josefin text-xs uppercase tracking-wider text-text/70">Mensaje Breve</label>
+            <textarea id="message" rows="3" class="w-full bg-transparent border-b border-white/20 pb-2 text-text focus:outline-none focus:border-primary transition-colors resize-none" placeholder="Describa brevemente su situación..."></textarea>
           </div>
-
+ 
           <div class="pt-4">
             <Button variant="primary" class="w-full flex justify-center py-4" id="submitBtn" type="submit" text="Enviar Mensaje" />
             <p id="formStatus" class="mt-4 text-center text-sm hidden"></p>
           </div>
         </form>
       </div>
-
     </div>
   </div>
 </section>
@@ -171,7 +126,7 @@ import Button from '../Button.astro';
         const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waText)}`;
         
         statusEl.textContent = 'Mensaje preparado. Redirigiendo a WhatsApp...';
-        statusEl.className = 'mt-4 text-center text-sm text-legal-green block';
+        statusEl.className = 'mt-4 text-center text-sm text-primary block';
         
         btnText.textContent = originalText;
         submitBtn.style.opacity = '1';

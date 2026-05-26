@@ -20,10 +20,10 @@ const HoverButton: React.FC<ButtonProps> = ({
   onClick, 
   className = '', 
   disabled = false,
-  glowColor = '#4CAF50', // GC Global Green Hover color as default glow
-  backgroundColor = '#1A3E1A', // GC Global Dark Green card bg
-  textColor = '#F2EFE9', // GC Global Light warm text
-  hoverTextColor = '#C9A84C', // GC Global Gold hover text
+  glowColor = '#2A6B2A',
+  backgroundColor = '#2A6B2A',
+  textColor = '#F2EFE9',
+  hoverTextColor = '#C9A84C',
   href,
   id,
   type

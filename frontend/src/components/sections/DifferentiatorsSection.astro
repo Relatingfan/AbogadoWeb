@@ -1,27 +1,83 @@
 ---
-import SkewCards from '../ui/gradient-card-showcase.tsx';
+const differentiators = [
+  {
+    num: "01",
+    title: "Trato Exclusivo",
+    desc: "Atención personalizada 1 a 1 con socios del despacho en todo momento.",
+    icon: "ph-crown"
+  },
+  {
+    num: "02",
+    title: "Visión Global",
+    desc: "Soluciones legales que consideran el contexto internacional de los negocios.",
+    icon: "ph-globe"
+  },
+  {
+    num: "03",
+    title: "Ética Intachable",
+    desc: "Transparencia total y honestidad en cada recomendación que hacemos.",
+    icon: "ph-scales"
+  },
+  {
+    num: "04",
+    title: "Estrategia de Vanguardia",
+    desc: "Uso de herramientas y metodologías innovadoras para resolver casos complejos.",
+    icon: "ph-compass"
+  }
+];
 ---
 
 <section id="nosotros" class="diff-section">
   <div class="diff-container">
     <div class="diff-header reveal-up">
-      <h2 class="font-playfair text-4xl md:text-5xl lg:text-6xl text-legal-white mb-6">
-        ¿Por qué elegir <span class="text-legal-green italic">GC Global</span>?
+      <h2 class="font-cormorant text-4xl md:text-5xl lg:text-6xl text-text mb-6">
+        ¿Por qué elegir <span class="text-primary italic">GC Global</span>?
       </h2>
       <div class="gold-divider w-24 mx-auto mb-6"></div>
-      <p class="font-dmsans font-light text-legal-grey text-lg md:text-xl max-w-3xl mx-auto">
+      <p class="font-dmsans font-light text-text/70 text-lg md:text-xl max-w-3xl mx-auto">
         Nos distinguimos por nuestra dedicación inquebrantable a la excelencia legal, combinando experiencia comprobada con un enfoque moderno y altamente personalizado.
       </p>
     </div>
 
-    <SkewCards client:visible />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-12 stagger-container">
+      {differentiators.map((item) => (
+        <div class="diff-card group relative border border-primary/20 bg-bg p-8 flex flex-col justify-between min-h-[320px]">
+          {/* Corner Counter */}
+          <span class="absolute top-6 right-8 font-josefin text-xs tracking-[0.2em] text-gold/30 group-hover:text-gold/60 transition-colors duration-500">
+            {item.num}
+          </span>
+          
+          <div class="flex flex-col h-full justify-between">
+            <div>
+              {/* Icon Container */}
+              <div class="w-14 h-14 border border-primary/20 group-hover:border-gold/50 flex items-center justify-center mb-8 transition-colors duration-500">
+                <i class={`ph-light ${item.icon} text-2xl text-primary group-hover:text-gold transition-colors duration-500`}></i>
+              </div>
+              
+              {/* Title */}
+              <h3 class="font-playfair text-xl font-bold text-text mb-3 group-hover:text-gold transition-colors duration-300">
+                {item.title}
+              </h3>
+              
+              {/* Line separator */}
+              <div class="w-12 h-[1px] bg-primary/40 group-hover:w-20 group-hover:bg-gold/80 transition-all duration-500 mb-6"></div>
+            </div>
+            
+            {/* Description */}
+            <p class="font-dmsans text-sm font-light text-text/70 leading-relaxed">
+              {item.desc}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
   </div>
 </section>
 
 <style>
   .diff-section {
-    padding: 6rem 0;
-    background-color: var(--color-bg-black, #0D0D0D);
+    padding: 8rem 0 6rem;
+    background-color: var(--color-bg, #0D0D0D);
     position: relative;
     overflow: hidden;
   }
@@ -39,12 +95,39 @@ import SkewCards from '../ui/gradient-card-showcase.tsx';
     text-align: center;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .diff-section :global(.group) {
-      transition: none;
+  .diff-card {
+    transition: 
+      border-color 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      background-color 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .diff-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(201, 168, 76, 0.5); /* --color-gold at 50% opacity */
+    background-color: rgba(201, 168, 76, 0.02); /* subtle gold tint */
+  }
+
+  /* Responsive adaptation for borders and spacing */
+  @media (max-width: 768px) {
+    .diff-section {
+      padding: 6rem 0 4rem;
     }
-    .diff-section :global(.animate-blob) {
-      animation: none;
+  }
+
+  /* Accessibility rules for prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .diff-card {
+      transform: none !important;
+      transition: none !important;
+    }
+    .diff-card:hover {
+      transform: none !important;
+      border-color: rgba(201, 168, 76, 0.5) !important;
+      background-color: rgba(201, 168, 76, 0.02) !important;
+    }
+    .diff-card :global(.group-hover\:w-20) {
+      width: 3rem !important; /* Keep original separator width */
     }
   }
 </style>

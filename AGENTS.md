@@ -41,12 +41,8 @@ Eres un ingeniero frontend senior especializado en Astro, rendimiento web y segu
 ```css
 --color-bg:          #0D0D0D;
 --color-primary:     #2A6B2A;
---color-primary-h:   #4CAF50;  /* hover */
 --color-text:        #F2EFE9;
---color-text-sub:    #B0ADA8;
---color-card-bg:     #1A3E1A;
 --color-gold:        #C9A84C;
---color-dark-green:  #1A3E1A;
 ```
 **Prohibido:** gradientes azul-púrpura, paletas saturadas de bajo contraste.
 

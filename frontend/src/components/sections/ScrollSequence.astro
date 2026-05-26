@@ -1,5 +1,5 @@
 ---
-const frameModules = import.meta.glob('../../../../assets/Scroll/*.jpg', { eager: true });
+const frameModules = import.meta.glob('../../../../assets/Scroll/*.webp', { eager: true });
 const keys = Object.keys(frameModules).sort();
 const frameUrls = keys.map((key) => {
   const mod = frameModules[key];
@@ -9,7 +9,7 @@ const frameUrls = keys.map((key) => {
 
 <div class="fixed top-0 left-0 w-full h-screen pointer-events-none z-0 overflow-hidden">
   <canvas id="hero-canvas" class="w-full h-full object-cover opacity-40 mix-blend-luminosity scale-105"></canvas>
-  <div class="absolute inset-0 bg-gradient-to-b from-bg-black/60 via-transparent to-bg-black z-10"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-bg/60 via-transparent to-bg z-10"></div>
 </div>
 
 <script define:vars={{ frameUrls }}>
