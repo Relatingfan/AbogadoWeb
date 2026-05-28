@@ -4,7 +4,7 @@ interface GlowCardProps {
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
-  glowColor?: 'blue' | 'purple' | 'green' | 'red' | 'orange';
+  glowColor?: 'blue' | 'purple' | 'green' | 'red' | 'orange' | 'navy' | 'platinum';
   size?: 'sm' | 'md' | 'lg';
   width?: string | number;
   height?: string | number;
@@ -16,7 +16,9 @@ const glowColorMap = {
   purple: { base: 280, spread: 300 },
   green: { base: 120, spread: 200 },
   red: { base: 0, spread: 200 },
-  orange: { base: 30, spread: 200 }
+  orange: { base: 30, spread: 200 },
+  navy: { base: 215, spread: 150 },
+  platinum: { base: 210, spread: 80 }
 };
 
 const sizeMap = {
@@ -29,7 +31,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
   children, 
   className = '', 
   style = {},
-  glowColor = 'green',
+  glowColor = 'navy',
   size = 'md',
   width,
   height,

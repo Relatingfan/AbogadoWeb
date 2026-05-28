@@ -15,25 +15,25 @@ const { text, href, variant = 'primary', class: className = '', type = 'button',
 // Determine colors based on variants following GC Global branding
 const config = {
   primary: {
-    backgroundColor: '#2A6B2A', // --color-primary
-    glowColor: '#C9A84C', // --color-gold glow makes it stand out beautifully
-    textColor: '#F2EFE9', // --color-text
-    hoverTextColor: '#C9A84C', // --color-gold
-    customClass: 'border-2 border-transparent shadow-[0_4px_20px_rgba(42,107,42,0.3)] hover:shadow-[0_6px_25px_rgba(42,107,42,0.5)]'
+    backgroundColor: '#1B365D', // --color-primary
+    glowColor: '#B8C5D6', // --color-gold glow (now platinum) makes it stand out beautifully
+    textColor: '#F1F5F9', // --color-text
+    hoverTextColor: '#B8C5D6', // --color-gold (now platinum)
+    customClass: 'border-2 border-transparent shadow-[0_4px_20px_rgba(27,54,93,0.3)] hover:shadow-[0_6px_25px_rgba(27,54,93,0.5)]'
   },
   secondary: {
-    backgroundColor: '#F2EFE9', // --color-text
-    glowColor: '#2A6B2A',
-    textColor: '#0D0D0D', // dark background text
-    hoverTextColor: '#2A6B2A',
+    backgroundColor: '#F1F5F9', // --color-text
+    glowColor: '#1B365D',
+    textColor: '#0A0D14', // dark background text
+    hoverTextColor: '#1B365D',
     customClass: 'border-2 border-transparent'
   },
   outline: {
     backgroundColor: 'transparent',
-    glowColor: '#2A6B2A',
-    textColor: '#F2EFE9',
-    hoverTextColor: '#C9A84C',
-    customClass: 'border-2 border-[#2A6B2A] hover:border-[#C9A84C] transition-colors duration-300'
+    glowColor: '#1B365D',
+    textColor: '#F1F5F9',
+    hoverTextColor: '#B8C5D6',
+    customClass: 'border-2 border-[#1B365D] hover:border-[#B8C5D6] transition-colors duration-300'
   }
 };
 
@@ -44,6 +44,7 @@ const currentConfig = config[variant];
   client:visible
   id={id}
   href={href}
+  type={type}
   glowColor={currentConfig.glowColor}
   backgroundColor={currentConfig.backgroundColor}
   textColor={currentConfig.textColor}

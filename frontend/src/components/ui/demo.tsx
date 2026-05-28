@@ -5,7 +5,7 @@ export function Default() {
   return (
     <div className="w-screen min-h-screen flex flex-col md:flex-row items-center justify-center gap-8 bg-bg p-8">
       {/* Card 1: Spotlight */}
-      <GlowCard glowColor="green">
+      <GlowCard glowColor="navy">
         <div className="flex flex-col items-center justify-between h-full text-center p-6 z-10">
           <div className="w-12 h-12 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center mb-4">
             <svg
@@ -14,7 +14,7 @@ export function Default() {
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#2A6B2A"
+              stroke="#1B365D"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -28,14 +28,14 @@ export function Default() {
           <div>
             <h3 className="font-playfair text-xl font-bold mb-2 text-gold">Spotlight Card</h3>
             <p className="font-dmsans text-sm text-text/70 leading-relaxed">
-              Hover over this card to see the premium green glow effect following your cursor.
+              Hover over this card to see the premium navy glow effect following your cursor.
             </p>
           </div>
         </div>
       </GlowCard>
 
       {/* Card 2: Interactive */}
-      <GlowCard glowColor="green">
+      <GlowCard glowColor="navy">
         <div className="flex flex-col items-center justify-between h-full text-center p-6 z-10">
           <div className="w-12 h-12 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center mb-4">
             <svg
@@ -44,7 +44,7 @@ export function Default() {
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#2A6B2A"
+              stroke="#1B365D"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -63,7 +63,7 @@ export function Default() {
       </GlowCard>
 
       {/* Card 3: Customizable */}
-      <GlowCard glowColor="green">
+      <GlowCard glowColor="navy">
         <div className="flex flex-col items-center justify-between h-full text-center p-6 z-10">
           <div className="w-12 h-12 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center mb-4">
             <svg
@@ -72,7 +72,7 @@ export function Default() {
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#2A6B2A"
+              stroke="#1B365D"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"

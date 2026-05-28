@@ -43,7 +43,7 @@ import Button from './Button.astro';
 </header>
 
 <style>
-  .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background-color: #2A6B2A; transition: width 0.3s ease-out; }
+  .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background-color: var(--color-primary); transition: width 0.3s ease-out; }
   .nav-link:hover::after { width: 100%; }
   .menu-active .hamburger-line:nth-child(1) { transform: translateY(8px) rotate(45deg); width: 32px; }
   .menu-active .hamburger-line:nth-child(2) { opacity: 0; width: 0; }

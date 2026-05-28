@@ -89,54 +89,100 @@ import Button from '../Button.astro';
  
           <div class="pt-4">
             <Button variant="primary" class="w-full flex justify-center py-4" id="submitBtn" type="submit" text="Enviar Mensaje" />
-            <p id="formStatus" class="mt-4 text-center text-sm hidden"></p>
           </div>
         </form>
       </div>
     </div>
   </div>
+
+  <!-- Toast Container para Feedback -->
+  <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
 </section>
+
 
 <script>
   const form = document.getElementById('contactForm');
-  const statusEl = document.getElementById('formStatus');
   const submitBtn = document.getElementById('submitBtn');
+  const toastContainer = document.getElementById('toastContainer');
 
-  if(form && statusEl && submitBtn) {
+  function showToast(message: string, type: 'success' | 'error') {
+    if (!toastContainer) return;
+    const toast = document.createElement('div');
+    // Se usa CSS nativo (Tailwind) para cumplir con el diseño, mostrando error en rojo y éxito en azul primario
+    toast.className = `px-6 py-4 rounded shadow-lg text-sm font-dmsans font-medium text-text pointer-events-auto flex items-center gap-3 transform transition-all duration-300 translate-y-full opacity-0 ${type === 'success' ? 'bg-primary/95 border border-primary' : 'bg-red-600/95 border border-red-500'}`;
+    
+    const icon = document.createElement('i');
+    icon.className = type === 'success' ? 'ph-bold ph-check-circle text-xl' : 'ph-bold ph-warning-circle text-xl';
+    
+    const text = document.createElement('span');
+    text.textContent = message;
+    
+    toast.appendChild(icon);
+    toast.appendChild(text);
+    toastContainer.appendChild(toast);
+    
+    // Animar entrada
+    requestAnimationFrame(() => {
+      // Un pequeño delay para que la transición funcione al agregar el elemento al DOM
+      setTimeout(() => {
+        toast.classList.remove('translate-y-full', 'opacity-0');
+      }, 10);
+    });
+    
+    // Remover después de 4.5 segundos
+    setTimeout(() => {
+      toast.classList.add('translate-y-full', 'opacity-0');
+      setTimeout(() => toast.remove(), 300); // esperar transición
+    }, 4500);
+  }
+
+  if(form && submitBtn) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       
-      const name = (document.getElementById('name') as HTMLInputElement).value;
-      const phone = (document.getElementById('phone') as HTMLInputElement).value;
-      const email = (document.getElementById('email') as HTMLInputElement).value;
+      const name = (document.getElementById('name') as HTMLInputElement).value.trim();
+      const phone = (document.getElementById('phone') as HTMLInputElement).value.trim();
+      const email = (document.getElementById('email') as HTMLInputElement).value.trim();
       const serviceSelect = document.getElementById('service') as HTMLSelectElement;
       const serviceText = serviceSelect.value ? serviceSelect.options[serviceSelect.selectedIndex].text : 'General';
-      const message = (document.getElementById('message') as HTMLTextAreaElement).value;
+      const message = (document.getElementById('message') as HTMLTextAreaElement).value.trim();
 
-      // Simulate validation & send
+      if (!name || !phone || !email) {
+        showToast('Por favor, completa los campos obligatorios.', 'error');
+        return;
+      }
+
+      // Simular botón cargando
       const btnText = submitBtn.querySelector('span') || submitBtn;
       const originalText = btnText.textContent;
       btnText.textContent = 'Enviando...';
       submitBtn.style.opacity = '0.7';
+      submitBtn.style.pointerEvents = 'none';
       
+      // Construir mensaje de WhatsApp con formato solicitado
+      const waText = `Buenas tardes, mi nombre es ${name}, estoy interesado en el area de ${serviceText} y tengo la siguiente situacion ${message || '(Sin descripción extra)'}.`;
+      const waNumber = "524494136546"; // 449 413 6546
+      const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waText)}`;
+      
+      try {
+        const newWindow = window.open(waUrl, '_blank');
+        if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+          // El navegador bloqueó el popup
+          showToast('El navegador bloqueó la redirección. Habilita las ventanas emergentes o usa este enlace: ' + waUrl, 'error');
+        } else {
+          // Se abrió con éxito
+          showToast('¡Mensaje preparado! Redirigiendo a WhatsApp...', 'success');
+          form.reset();
+        }
+      } catch(err) {
+        showToast('Ocurrió un error al intentar abrir WhatsApp.', 'error');
+      }
+
+      // Restaurar botón después de 1 segundo
       setTimeout(() => {
-        // Construct WhatsApp message
-        const waText = `Hola GC Global, soy ${name}. Mi teléfono es ${phone} y mi correo es ${email}. Me interesa el área de ${serviceText}. Mensaje: ${message}`;
-        const waNumber = "524494136546"; // Real WhatsApp number (Lic. Brenda Galván)
-        const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waText)}`;
-        
-        statusEl.textContent = 'Mensaje preparado. Redirigiendo a WhatsApp...';
-        statusEl.className = 'mt-4 text-center text-sm text-primary block';
-        
         btnText.textContent = originalText;
         submitBtn.style.opacity = '1';
-        
-        setTimeout(() => {
-          window.open(waUrl, '_blank');
-          (form as HTMLFormElement).reset();
-          statusEl.classList.add('hidden');
-        }, 1500);
-
+        submitBtn.style.pointerEvents = 'auto';
       }, 1000);
     });
   }

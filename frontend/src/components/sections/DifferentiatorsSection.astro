@@ -41,7 +41,7 @@ const differentiators = [
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-12 stagger-container">
       {differentiators.map((item) => (
-        <div class="diff-card group relative border border-primary/20 bg-bg p-8 flex flex-col justify-between min-h-[320px]">
+        <div class="diff-card group relative border border-gold/30 bg-bg p-8 flex flex-col justify-between min-h-[320px]">
           {/* Corner Counter */}
           <span class="absolute top-6 right-8 font-josefin text-xs tracking-[0.2em] text-gold/30 group-hover:text-gold/60 transition-colors duration-500">
             {item.num}
@@ -104,7 +104,7 @@ const differentiators = [
 
   .diff-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(201, 168, 76, 0.5); /* --color-gold at 50% opacity */
+    border-color: var(--color-gold); /* Solid gold border on hover */
     background-color: rgba(201, 168, 76, 0.02); /* subtle gold tint */
   }
 
@@ -123,7 +123,7 @@ const differentiators = [
     }
     .diff-card:hover {
       transform: none !important;
-      border-color: rgba(201, 168, 76, 0.5) !important;
+      border-color: var(--color-gold) !important;
       background-color: rgba(201, 168, 76, 0.02) !important;
     }
     .diff-card :global(.group-hover\:w-20) {
