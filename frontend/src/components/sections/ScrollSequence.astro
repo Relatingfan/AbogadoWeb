@@ -5,10 +5,14 @@ const frameUrls = keys.map((key) => {
   const mod = frameModules[key];
   return mod.default ? mod.default.src || mod.default : mod;
 });
+const firstFrameUrl = frameUrls.length > 0 ? frameUrls[0] : '';
 ---
 
 <div class="fixed top-0 left-0 w-full h-screen pointer-events-none z-0 overflow-hidden">
-  <canvas id="hero-canvas" class="w-full h-full object-cover opacity-40 mix-blend-luminosity scale-105"></canvas>
+  <canvas id="hero-canvas" class="hidden lg:block w-full h-full object-cover opacity-40 mix-blend-luminosity scale-105"></canvas>
+  {firstFrameUrl && (
+    <img id="hero-static" src={firstFrameUrl} class="block lg:hidden w-full h-full object-cover opacity-40 mix-blend-luminosity scale-105" alt="Background" />
+  )}
   <div class="absolute inset-0 bg-gradient-to-b from-bg/60 via-transparent to-bg z-10"></div>
 </div>
 
@@ -28,10 +32,11 @@ const frameUrls = keys.map((key) => {
     const context = canvas.getContext('2d');
     if (!context) return;
     
-    // Check reduced motion
+    // Check reduced motion or mobile device
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.matchMedia('(max-width: 1023px)').matches;
     
-    if (prefersReducedMotion) {
+    if (prefersReducedMotion || isMobile) {
       canvas.style.display = 'none';
       return;
     }

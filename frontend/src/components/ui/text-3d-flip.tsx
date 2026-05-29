@@ -10,6 +10,7 @@ import React, {
 } from "react"
 import {
   useAnimate,
+  useInView,
   type AnimationOptions,
   type ValueAnimationTransition,
 } from "motion/react"
@@ -88,6 +89,7 @@ const Text3DFlip = ({
   const isAnimatingRef = useRef(false)
   const isMountedRef = useRef(false)
   const [scope, animate] = useAnimate()
+  const inView = useInView(scope, { once: true, margin: "-10% 0px" })
 
   const rotationTransform = ROTATION_MAP[rotateDirection]
 
@@ -143,47 +145,31 @@ const Text3DFlip = ({
     [staggerFrom, staggerDuration]
   )
 
-  const handleHoverStart = useCallback(async () => {
-    if (isAnimatingRef.current) return
-    isAnimatingRef.current = true
+  useEffect(() => {
+    if (!inView || !isMountedRef.current) return
 
-    try {
-      const totalChars = characters.reduce(
-        (sum, word) => sum + word.characters.length,
-        0
-      )
+    const totalChars = characters.reduce(
+      (sum, word) => sum + word.characters.length,
+      0
+    )
 
-      const delays = Array.from({ length: totalChars }, (_, i) =>
-        getStaggerDelay(i, totalChars)
-      )
+    const delays = Array.from({ length: totalChars }, (_, i) =>
+      getStaggerDelay(i, totalChars)
+    )
 
-      await animate(
-        ".text-3d-flip-char",
-        { transform: rotationTransform },
-        {
-          ...transition,
-          delay: (i: number) => delays[i],
-        }
-      )
-
-      if (!isMountedRef.current) return
-
-      await animate(
-        ".text-3d-flip-char",
-        { transform: "rotateX(0deg) rotateY(0deg)" },
-        { duration: 0 }
-      )
-    } finally {
-      if (isMountedRef.current) {
-        isAnimatingRef.current = false
+    animate(
+      ".text-3d-flip-char",
+      { transform: rotationTransform },
+      {
+        ...transition,
+        delay: (i: number) => delays[i],
       }
-    }
-  }, [characters, transition, getStaggerDelay, rotationTransform, animate])
+    )
+  }, [inView, characters, transition, getStaggerDelay, rotationTransform, animate])
 
   return (
     <ElementTag
-      className={cn("relative flex flex-wrap", className)}
-      onMouseEnter={handleHoverStart}
+      className={cn("relative flex flex-wrap gap-y-1 md:gap-y-2", className)}
       ref={scope}
       {...props}
     >

@@ -14,7 +14,7 @@
       <!-- Line connector (desktop) -->
       <div class="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-white/10 -translate-y-1/2"></div>
       
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6 relative">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6 relative stagger-container">
         {
           [
             {
@@ -38,7 +38,7 @@
               desc: "Representación firme hasta alcanzar el mejor resultado posible."
             }
           ].map((item, i) => (
-            <div class="relative flex flex-col items-center text-center reveal-up" style={`transition-delay: ${i * 150}ms`}>
+            <div class="relative flex flex-col items-center text-center">
               <div class="w-16 h-16 bg-bg border border-primary flex items-center justify-center font-playfair text-2xl text-primary mb-6 relative z-10 shadow-[0_0_20px_rgba(42,107,42,0.2)]">
                 {item.step}
               </div>

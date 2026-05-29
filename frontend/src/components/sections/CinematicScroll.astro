@@ -2,14 +2,14 @@
 import Text3DFlip from '../ui/text-3d-flip';
 ---
 
-<section class="relative h-[60vh] w-full overflow-hidden flex items-center justify-center">
+<section class="relative min-h-[60vh] py-20 w-full overflow-hidden flex items-center justify-center">
   <div 
     id="parallax-bg"
     class="absolute inset-0 w-full h-[120%] -top-[10%] bg-[url('https://images.unsplash.com/photo-1505664177275-b1664cb87d15?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-30 mix-blend-luminosity"
   ></div>
-  <div class="absolute inset-0 bg-gradient-to-b from-bg via-bg/60 to-bg"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-bg via-bg/60 to-bg pointer-events-none"></div>
   
-  <div class="relative z-10 max-w-4xl mx-auto px-6 text-center reveal-text w-full">
+  <div class="relative z-20 max-w-4xl mx-auto px-6 text-center reveal-text w-full" style="perspective: 1000px;">
     <i class="ph ph-quotes text-5xl text-gold mb-6 opacity-50 block mx-auto"></i>
     <Text3DFlip
       client:visible
@@ -32,15 +32,19 @@ import Text3DFlip from '../ui/text-3d-flip';
   gsap.registerPlugin(ScrollTrigger);
 
   document.addEventListener('DOMContentLoaded', () => {
-    gsap.to('#parallax-bg', {
-      yPercent: 20,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '#parallax-bg',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true
-      }
+    let mm = gsap.matchMedia();
+
+    mm.add("(min-width: 1024px)", () => {
+      gsap.to('#parallax-bg', {
+        yPercent: 20,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#parallax-bg',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
     });
   });
 </script>
