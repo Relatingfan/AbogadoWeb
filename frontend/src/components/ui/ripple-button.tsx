@@ -63,7 +63,7 @@ const RippleButton: React.FC<RippleButtonProps> = ({
   variant = 'default',
   rippleColor: userProvidedRippleColor,
   rippleDuration = 600,
-  hoverBaseColor = '#1B365D', // default GC Global navy
+  hoverBaseColor = '#1B365D', // default firm navy
   hoverRippleColor: customHoverRippleColor,
   hoverBorderEffectColor = '#B8C5D677', // default platinum ripple border
   hoverBorderEffectThickness = '0.15em',
