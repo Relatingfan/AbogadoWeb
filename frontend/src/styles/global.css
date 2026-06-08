@@ -3,10 +3,10 @@
 @import "tw-animate-css";
 
 @theme {
-  --color-bg: #0A0D14;
-  --color-primary: #1B365D;
-  --color-text: #F1F5F9;
-  --color-gold: #B8C5D6;
+  --color-bg: #FFFFFF;
+  --color-primary: #0A1930;
+  --color-text: #0A0D14;
+  --color-gold: #c0a969;
 
   --font-cormorant: "Cormorant Garamond", serif;
   --font-playfair: "Playfair Display", serif;

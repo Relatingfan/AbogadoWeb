@@ -15,25 +15,25 @@ const { text, href, variant = 'primary', class: className = '', type = 'button',
 // Determine colors based on variants following firm branding
 const config = {
   primary: {
-    backgroundColor: '#1B365D', // --color-primary
+    backgroundColor: '#0A1930', // --color-primary
     glowColor: '#B8C5D6', // --color-gold glow (now platinum) makes it stand out beautifully
-    textColor: '#F1F5F9', // --color-text
+    textColor: '#FFFFFF', // white text on primary
     hoverTextColor: '#B8C5D6', // --color-gold (now platinum)
-    customClass: 'border-2 border-transparent shadow-[0_4px_20px_rgba(27,54,93,0.3)] hover:shadow-[0_6px_25px_rgba(27,54,93,0.5)]'
+    customClass: 'border-2 border-transparent shadow-[0_4px_20px_rgba(10,25,48,0.3)] hover:shadow-[0_6px_25px_rgba(10,25,48,0.5)]'
   },
   secondary: {
-    backgroundColor: '#F1F5F9', // --color-text
-    glowColor: '#1B365D',
-    textColor: '#0A0D14', // dark background text
-    hoverTextColor: '#1B365D',
+    backgroundColor: '#0A0D14', // --color-text
+    glowColor: '#0A1930',
+    textColor: '#FFFFFF', // light text on dark secondary
+    hoverTextColor: '#FFFFFF',
     customClass: 'border-2 border-transparent'
   },
   outline: {
     backgroundColor: 'transparent',
-    glowColor: '#1B365D',
-    textColor: '#F1F5F9',
+    glowColor: '#0A1930',
+    textColor: '#0A0D14', // dark text on transparent bg
     hoverTextColor: '#B8C5D6',
-    customClass: 'border-2 border-[#1B365D] hover:border-[#B8C5D6] transition-colors duration-300'
+    customClass: 'border-2 border-[#0A1930] hover:border-[#B8C5D6] transition-colors duration-300'
   }
 };
 

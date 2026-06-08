@@ -2,30 +2,30 @@
 import Button from './Button.astro';
 ---
 
-<header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-350 ease-out py-4 md:py-6 border-b border-transparent max-md:bg-bg">
+<header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-350 ease-out py-4 md:py-6 border-b border-transparent max-md:bg-bg group">
   <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
     
-    <a href="#inicio" class="flex items-center gap-3 group relative z-50">
+    <a href="#inicio" class="flex items-center gap-3 relative z-50">
       <div class="flex flex-col">
-        <span class="font-playfair text-lg md:text-xl font-bold tracking-wide text-text leading-none">FIRMA LEGAL</span>
-        <span class="font-josefin text-xs tracking-[0.2em] text-gold mt-1">CONSULTORES</span>
+        <span class="font-playfair text-lg md:text-xl font-bold tracking-wide text-text md:text-white md:group-[.scrolled]:text-text transition-colors leading-none">FIRMA LEGAL</span>
+        <span class="font-josefin text-xs tracking-[0.2em] text-gold md:text-white/80 md:group-[.scrolled]:text-gold transition-colors mt-1">CONSULTORES</span>
       </div>
     </a>
     
     <nav class="hidden md:flex items-center gap-8">
-      <a href="#inicio" class="nav-link font-dmsans text-sm font-light text-text hover:text-primary tracking-wide transition-colors relative py-2">Inicio</a>
-      <a href="#servicios" class="nav-link font-dmsans text-sm font-light text-text hover:text-primary tracking-wide transition-colors relative py-2">Servicios</a>
-      <a href="#nosotros" class="nav-link font-dmsans text-sm font-light text-text hover:text-primary tracking-wide transition-colors relative py-2">Nosotros</a>
-      <a href="#contacto" class="nav-link font-dmsans text-sm font-light text-text hover:text-primary tracking-wide transition-colors relative py-2">Contacto</a>
+      <a href="#inicio" class="nav-link font-dmsans text-sm font-light text-text md:text-white md:group-[.scrolled]:text-text hover:text-primary md:hover:text-white/80 md:group-[.scrolled]:hover:text-primary tracking-wide transition-colors relative py-2">Inicio</a>
+      <a href="#servicios" class="nav-link font-dmsans text-sm font-light text-text md:text-white md:group-[.scrolled]:text-text hover:text-primary md:hover:text-white/80 md:group-[.scrolled]:hover:text-primary tracking-wide transition-colors relative py-2">Servicios</a>
+      <a href="#nosotros" class="nav-link font-dmsans text-sm font-light text-text md:text-white md:group-[.scrolled]:text-text hover:text-primary md:hover:text-white/80 md:group-[.scrolled]:hover:text-primary tracking-wide transition-colors relative py-2">Nosotros</a>
+      <a href="#contacto" class="nav-link font-dmsans text-sm font-light text-text md:text-white md:group-[.scrolled]:text-text hover:text-primary md:hover:text-white/80 md:group-[.scrolled]:hover:text-primary tracking-wide transition-colors relative py-2">Contacto</a>
     </nav>
     
     <div class="hidden md:block">
-      <Button text="Agendar Consulta" href="#contacto" variant="outline" class="text-[10px] tracking-widest py-3 px-6" />
+      <Button text="Agendar Consulta" href="#contacto" variant="outline" class="nav-cta text-[10px] tracking-widest py-3 px-6" />
     </div>
 
-    <button id="menu-toggle" class="md:hidden flex flex-col justify-center items-end gap-1.5 w-8 h-8 focus:outline-none relative z-50 group" aria-label="Abrir menú">
+    <button id="menu-toggle" class="md:hidden flex flex-col justify-center items-end gap-1.5 w-8 h-8 focus:outline-none relative z-50" aria-label="Abrir menú">
       <span class="hamburger-line w-8 h-0.5 bg-text transition-all duration-300"></span>
-      <span class="hamburger-line w-6 h-0.5 bg-text transition-all duration-300 group-hover:w-8"></span>
+      <span class="hamburger-line w-6 h-0.5 bg-text transition-all duration-300"></span>
       <span class="hamburger-line w-7 h-0.5 bg-text transition-all duration-300"></span>
     </button>
   </div>
@@ -42,11 +42,22 @@ import Button from './Button.astro';
 </header>
 
 <style>
-  .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background-color: var(--color-primary); transition: width 0.3s ease-out; }
+  .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background-color: currentColor; transition: width 0.3s ease-out; }
   .nav-link:hover::after { width: 100%; }
   .menu-active .hamburger-line:nth-child(1) { transform: translateY(8px) rotate(45deg); width: 32px; }
   .menu-active .hamburger-line:nth-child(2) { opacity: 0; width: 0; }
   .menu-active .hamburger-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); width: 32px; }
+  
+  @media (min-width: 768px) {
+    #main-header:not(.scrolled) :global(.nav-cta) {
+      border-color: white !important;
+      color: white !important;
+    }
+    #main-header:not(.scrolled) :global(.nav-cta:hover) {
+      color: var(--color-primary) !important;
+      background-color: white !important;
+    }
+  }
 </style>
 
 <script>
@@ -60,10 +71,10 @@ import Button from './Button.astro';
   window.addEventListener('scroll', () => {
     if (header) {
       if (window.scrollY >= 80) {
-        header.classList.add('bg-bg/90', 'backdrop-blur-md', 'py-4', 'md:py-4', 'border-b-bg');
+        header.classList.add('bg-bg/90', 'backdrop-blur-md', 'py-4', 'md:py-4', 'border-b-bg', 'scrolled');
         header.classList.remove('md:py-6', 'border-transparent');
       } else {
-        header.classList.remove('bg-bg/90', 'backdrop-blur-md', 'py-4', 'md:py-4', 'border-b-bg');
+        header.classList.remove('bg-bg/90', 'backdrop-blur-md', 'py-4', 'md:py-4', 'border-b-bg', 'scrolled');
         header.classList.add('md:py-6', 'border-transparent');
       }
     }

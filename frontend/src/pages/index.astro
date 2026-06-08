@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import ScrollSequence from '../components/sections/ScrollSequence.astro';
 import HeroSection from '../components/sections/HeroSection.astro';
 import ServicesSection from '../components/sections/ServicesSection.astro';
-import CinematicScroll from '../components/sections/CinematicScroll.astro';
 import DifferentiatorsSection from '../components/sections/DifferentiatorsSection.astro';
 import TeamSection from '../components/sections/TeamSection.astro';
 import TestimonialsSection from '../components/sections/TestimonialsSection.astro';
@@ -13,10 +12,11 @@ import ContactSection from '../components/sections/ContactSection.astro';
 
 <Layout title="Inicio">
   <main>
-    <ScrollSequence />
-    <HeroSection />
-    <ServicesSection />
-    <CinematicScroll />
+    <div style="--color-bg: #0A0D14; --color-text: #F1F5F9;" class="text-text">
+      <ScrollSequence />
+      <HeroSection />
+      <ServicesSection />
+    </div>
     
     <div class="relative z-10 bg-bg">
       <DifferentiatorsSection />

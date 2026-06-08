@@ -45,7 +45,7 @@ const testimonials = [
 
 <section id="testimonios" class="py-32 bg-bg relative overflow-hidden border-t border-primary/20">
   <!-- Subtle radial background glow -->
-  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(27,54,93,0.06)_0%,transparent_70%)] pointer-events-none"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(10,25,48,0.06)_0%,transparent_70%)] pointer-events-none"></div>
   
   <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
     <div class="mb-20 reveal-up">
@@ -81,7 +81,7 @@ const testimonials = [
       >
         {testimonials.map((t, idx) => (
           <div 
-            class="testimonial-card snap-start shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] rounded-2xl bg-[#151515] p-7 flex flex-col justify-between relative min-h-[250px]"
+            class="testimonial-card snap-start shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] bg-white border border-primary/20 p-7 flex flex-col justify-between relative min-h-[250px]"
             role="group" 
             aria-roledescription="slide" 
             aria-label={`Opinión ${idx + 1} de ${testimonials.length}`}
@@ -95,7 +95,7 @@ const testimonials = [
                     <img 
                       src={t.avatar} 
                       alt={`Foto de ${t.name}`} 
-                      class="w-11 h-11 rounded-full object-cover shrink-0 border border-white/10" 
+                      class="w-11 h-11 rounded-full object-cover shrink-0 border border-primary/10" 
                     />
                   ) : (
                     <div class={`w-11 h-11 rounded-full flex items-center justify-center text-white font-dmsans text-[17px] font-medium shrink-0 ${t.avatarBg}`}>
@@ -104,8 +104,8 @@ const testimonials = [
                   )}
                   
                   <div>
-                    <h4 class="font-dmsans text-[15px] font-bold text-white leading-tight">{t.name}</h4>
-                    <p class="font-dmsans text-[12px] text-gray-400 mt-1">{t.meta}</p>
+                    <h4 class="font-dmsans text-[15px] font-bold text-text leading-tight">{t.name}</h4>
+                    <p class="font-dmsans text-[12px] text-text/60 mt-1">{t.meta}</p>
                   </div>
                 </div>
 
@@ -136,13 +136,13 @@ const testimonials = [
               </div>
               
               <!-- Review Text content -->
-              <p class="font-dmsans text-[14px] leading-relaxed text-white font-light">
+              <p class="font-dmsans text-[14px] leading-relaxed text-text/80 font-light">
                 {t.text}
               </p>
 
               <!-- Optional Read More Link -->
               {t.hasReadMore && (
-                <button class="font-dmsans text-[13px] text-gray-400 mt-1 block hover:underline cursor-pointer text-left">
+                <button class="font-dmsans text-[13px] text-text/60 mt-1 block hover:underline cursor-pointer text-left hover:text-primary">
                   Read more
                 </button>
               )}
@@ -160,16 +160,7 @@ const testimonials = [
         <i class="ph ph-caret-right text-lg font-bold"></i>
       </button>
 
-      <!-- Bottom Progress Dots -->
-      <div class="flex gap-2.5 justify-center mt-8" id="testimonials-dots">
-        {testimonials.map((_, idx) => (
-          <button 
-            class={`testimonial-dot h-[3px] transition-all duration-300 cursor-pointer ${idx === 0 ? 'w-8 bg-gold' : 'w-4 bg-gold/20'}`}
-            data-index={idx}
-            aria-label={`Ir al testimonio ${idx + 1}`}
-          />
-        ))}
-      </div>
+
       
     </div>
   </div>
@@ -205,7 +196,7 @@ const testimonials = [
     const nextBtn = document.getElementById('testimonial-next');
     const dots = document.querySelectorAll('.testimonial-dot');
     
-    if (!container || !prevBtn || !nextBtn || dots.length === 0) return;
+    if (!container || !prevBtn || !nextBtn) return;
 
     const getScrollBehavior = () => {
       const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');

@@ -39,10 +39,10 @@ Eres un ingeniero frontend senior especializado en Astro, rendimiento web y segu
 
 ### Paleta
 ```css
---color-bg:          #0A0D14;
---color-primary:     #1B365D;
---color-text:        #F1F5F9;
---color-gold:        #B8C5D6;
+--color-bg:          #FFFFFF;
+--color-primary:     #0A1930;
+--color-text:        #0A0D14;
+--color-gold:        #c0a969;
 ```
 **Prohibido:** gradientes azul-púrpura, paletas saturadas de bajo contraste.
 
@@ -108,9 +108,9 @@ Eres un ingeniero frontend senior especializado en Astro, rendimiento web y segu
 | Equipo foto | reveal cortina vertical | GSAP |
 | Equipo nombre | typewriter | JS nativo |
 | Formulario | slide-in desde derecha | GSAP |
-| Botón submit | ripple azul | CSS |
+| Botón submit | ripple dorado | CSS |
 | Hover botones | `cubic-bezier(0.25, 0.46, 0.45, 0.94)` 200–350ms | CSS |
-| Cursor custom | canvas halo azul, solo desktop ≥ 1024px | JS nativo |
+| Cursor custom | canvas halo dorado, solo desktop ≥ 1024px | JS nativo |
 
 **Obligatorio:** `@media (prefers-reduced-motion: reduce)` → desactivar toda animación. Elementos aparecen sin transición.
 
@@ -147,7 +147,7 @@ Eres un ingeniero frontend senior especializado en Astro, rendimiento web y segu
 **Campos:** Nombre completo · Teléfono · Email · Área de consulta (select) · Mensaje
 
 **Comportamiento:**
-- Inputs: fondo transparente, borde inferior 1px gris. Focus: borde azul + label flota.
+- Inputs: fondo transparente, borde inferior 1px gris. Focus: borde dorado + label flota.
 - Validación inline en tiempo real. Sin `alert()` del browser.
 - Submit exitoso: mensaje confirmación visible en ≤ 500ms, sin recarga.
 - Email llega al despacho en ≤ 2 min con todos los campos.
