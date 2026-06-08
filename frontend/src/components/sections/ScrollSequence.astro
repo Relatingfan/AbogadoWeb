@@ -1,9 +1,9 @@
 ---
-const frameModules = import.meta.glob('../../../../assets/Scroll/*.webp', { eager: true });
+const frameModules = import.meta.glob('../../../../assets/Scroll/*.webp', { eager: true, query: '?url' });
 const keys = Object.keys(frameModules).sort();
 const frameUrls = keys.map((key) => {
-  const mod = frameModules[key];
-  return mod.default ? mod.default.src || mod.default : mod;
+  const mod = frameModules[key] as any;
+  return mod.default || mod;
 });
 const firstFrameUrl = frameUrls.length > 0 ? frameUrls[0] : '';
 ---
@@ -21,11 +21,6 @@ const firstFrameUrl = frameUrls.length > 0 ? frameUrls[0] : '';
 </script>
 
 <script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-  gsap.registerPlugin(ScrollTrigger);
-
   document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('hero-canvas');
     if (!canvas) return;
@@ -41,6 +36,22 @@ const firstFrameUrl = frameUrls.length > 0 ? frameUrls[0] : '';
       return;
     }
     
+    let currentFrame = 0;
+    const frameCount = window.scrollFrameUrls.length;
+    const images = [];
+    let loaded = 0;
+    
+    // Preload all images
+    for (let i = 0; i < frameCount; i++) {
+      const img = new Image();
+      img.onload = () => {
+        loaded++;
+        if (loaded === 1) render(); // Render first frame ASAP
+      };
+      img.src = window.scrollFrameUrls[i];
+      images.push(img);
+    }
+    
     // Resize canvas
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -48,30 +59,12 @@ const firstFrameUrl = frameUrls.length > 0 ? frameUrls[0] : '';
       render();
     };
     window.addEventListener('resize', resize);
-    
-    const frameCount = window.scrollFrameUrls.length;
-    const images = [];
-    let loaded = 0;
-    
-    const seq = { frame: 0 };
-    
-    // Preload all images
-    for (let i = 0; i < frameCount; i++) {
-      const img = new Image();
-      img.onload = () => {
-        loaded++;
-        render();
-      };
-      img.src = window.scrollFrameUrls[i];
-      images.push(img);
-    }
-    
-    // Initial size setup
     resize();
 
     function render() {
-      if (!images[Math.round(seq.frame)]) return;
-      const img = images[Math.round(seq.frame)];
+      const frameIndex = Math.round(currentFrame);
+      if (!images[frameIndex]) return;
+      const img = images[frameIndex];
       if (!img.complete || img.naturalWidth === 0) return;
       
       const canvasRatio = canvas.width / canvas.height;
@@ -95,21 +88,25 @@ const firstFrameUrl = frameUrls.length > 0 ? frameUrls[0] : '';
       context.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
     }
 
-    // Image frame animation scroll trigger
-    gsap.to(seq, {
-      frame: frameCount - 1,
-      snap: "frame",
-      ease: "none",
-      scrollTrigger: {
-        trigger: "#inicio",
-        start: "top top",
-        endTrigger: "#servicios",
-        end: "top top", 
-        scrub: true
-      },
-      onUpdate: render
-    });
-
-
+    let ticking = false;
+    
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          // We want the animation to complete when scrolling 1.5x viewport heights
+          // Adjust maxScroll to control animation speed
+          const maxScroll = window.innerHeight * 1.5; 
+          let progress = scrollY / maxScroll;
+          if (progress < 0) progress = 0;
+          if (progress > 1) progress = 1;
+          
+          currentFrame = progress * (frameCount - 1);
+          render();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
   });
 </script>

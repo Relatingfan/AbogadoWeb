@@ -49,20 +49,20 @@ Eres un ingeniero frontend senior especializado en Astro, rendimiento web y segu
 ### Tipografía (Google Fonts)
 | Uso | Fuente | Pesos |
 |---|---|---|
-| Hero / Display | Cormorant Garamond | 300, 400, 600 Italic |
-| H2 / H3 | Playfair Display | 400, 700 |
-| Body / UI / Botones | DM Sans | 300, 400, 500 |
-| Labels / Stats | Josefin Sans | 300 uppercase, letter-spacing: 0.2em |
+| Hero / Display | Outfit | 300, 400, 600 |
+| H2 / H3 | Lora | 400, 700 |
+| Body / UI / Botones | Inter | 300, 400, 500 |
+| Labels / Stats | Montserrat | 300 uppercase, letter-spacing: 0.2em |
 
 ### Escala tipográfica
 | Tag | Fuente | Desktop | Mobile |
 |---|---|---|---|
-| H1 | Cormorant Garamond 300 | 96–120px | 48–64px |
-| H2 | Playfair Display 400 | 48–64px | 32px |
-| H3 | Playfair Display 700 | 28–32px | — |
-| Body L | DM Sans 300 | 18–20px, lh 1.75 | — |
-| Body | DM Sans 400 | 16px, lh 1.65 | — |
-| Label | Josefin Sans 300 | 11–13px | — |
+| H1 | Outfit 300 | 96–120px | 48–64px |
+| H2 | Lora 400 | 48–64px | 32px |
+| H3 | Lora 700 | 28–32px | — |
+| Body L | Inter 300 | 18–20px, lh 1.75 | — |
+| Body | Inter 400 | 16px, lh 1.65 | — |
+| Label | Montserrat 300 | 11–13px | — |
 
 ### Elementos gráficos
 - Iconos: **Phosphor Icons** (outline, stroke 1px).

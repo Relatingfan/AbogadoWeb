@@ -51,11 +51,11 @@ const testimonials = [
     <div class="mb-20 reveal-up">
       <div class="flex items-center gap-4 mb-6">
         <div class="w-12 h-px bg-gold/50"></div>
-        <span class="font-josefin text-xs tracking-[0.3em] uppercase text-gold">Testimonios</span>
+        <span class="font-montserrat text-xs tracking-[0.3em] uppercase text-gold">Testimonios</span>
       </div>
-      <h2 class="font-cormorant text-4xl md:text-5xl lg:text-6xl font-light text-text leading-tight">
+      <h2 class="font-outfit text-4xl md:text-5xl lg:text-6xl font-light text-text leading-tight">
         Opiniones en <br class="hidden md:block"/>
-        <span class="font-playfair italic text-primary">Google Reviews.</span>
+        <span class="font-lora italic text-primary">Google Reviews.</span>
       </h2>
     </div>
 
@@ -98,14 +98,14 @@ const testimonials = [
                       class="w-11 h-11 rounded-full object-cover shrink-0 border border-primary/10" 
                     />
                   ) : (
-                    <div class={`w-11 h-11 rounded-full flex items-center justify-center text-white font-dmsans text-[17px] font-medium shrink-0 ${t.avatarBg}`}>
+                    <div class={`w-11 h-11 rounded-full flex items-center justify-center text-white font-inter text-[17px] font-medium shrink-0 ${t.avatarBg}`}>
                       {t.avatar}
                     </div>
                   )}
                   
                   <div>
-                    <h4 class="font-dmsans text-[15px] font-bold text-text leading-tight">{t.name}</h4>
-                    <p class="font-dmsans text-[12px] text-text/60 mt-1">{t.meta}</p>
+                    <h4 class="font-inter text-[15px] font-bold text-text leading-tight">{t.name}</h4>
+                    <p class="font-inter text-[12px] text-text/60 mt-1">{t.meta}</p>
                   </div>
                 </div>
 
@@ -136,13 +136,13 @@ const testimonials = [
               </div>
               
               <!-- Review Text content -->
-              <p class="font-dmsans text-[14px] leading-relaxed text-text/80 font-light">
+              <p class="font-inter text-[14px] leading-relaxed text-text/80 font-light">
                 {t.text}
               </p>
 
               <!-- Optional Read More Link -->
               {t.hasReadMore && (
-                <button class="font-dmsans text-[13px] text-text/60 mt-1 block hover:underline cursor-pointer text-left hover:text-primary">
+                <button class="font-inter text-[13px] text-text/60 mt-1 block hover:underline cursor-pointer text-left hover:text-primary">
                   Read more
                 </button>
               )}

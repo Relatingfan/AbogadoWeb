@@ -11,7 +11,7 @@ El desarrollo se ha enfocado en la implementación del diseño frontend en Astro
 ### 1. Funcionalidad de Contacto (WhatsApp)
 - **Generación dinámica**: El formulario de contacto de `ContactSection.astro` ahora toma los datos ingresados por el usuario (Nombre, Área de interés y Mensaje/Situación) para construir un mensaje predefinido.
 - **Áreas de Práctica**: Se integraron los servicios correctos al menú desplegable del formulario: Asesoría Jurídica, Juicios Penales, Juicios civiles, Juicios Laborales, Juicios Familiares, Juicios Mercantiles, Pólizas de Laborales & Pruebas psicolaborales.
-- **Redirección**: Al enviar el formulario, el usuario es redirigido a la API de WhatsApp (`wa.me`) hacia el número de contacto principal (`+52 449 413 6546`).
+- **Redirección**: Al enviar el formulario, el usuario es redirigido a la API de WhatsApp (`wa.me`) hacia el número de contacto principal (`+52 449 215 0600`).
 - **Feedback UI**: Se agregó un sistema de notificaciones (toast/popup) que confirma el envío exitoso antes de abrir WhatsApp o notifica de posibles errores de validación, sin necesidad de recargar la página ni usar `alert()`.
 
 ### 2. Optimización para Dispositivos Móviles
